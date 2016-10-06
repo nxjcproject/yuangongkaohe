@@ -39,21 +39,15 @@
                        </td>    
                          <td>岗位:</td>
                         <td >                               
-                           <input class="easyui-combobox" type="text" id="workingSection" style="width:80px" />                 
+                           <input class="easyui-combobox" type="text" id="workingSection" style="width:100px" />                 
                         </td>  
-                      <%--     <td>产线:</td> 
-                        <td >                               
-                            <input class="easyui-textbox" id="productionName" readonly="readonly"  style="width:80px"/>            
-                        </td>          --%>                        
-               
-                               <%--<td>开始时间：</td>--%>
-                              </tr>
-                    </table>  
-                    <table>
+                      </tr>
+                 </table>  
+                <table>
                         <tr>
                         <td>考核组：</td>
                         <td>                           
-                            <input id="AssessmentGroup" class="easyui-combogrid" required="required" style="width:70px"/>                   
+                            <input id="AssessmentGroup" class="easyui-combogrid" required="required" style="width:100px"/>                   
                         </td>
                  
                          <td>周期：</td>

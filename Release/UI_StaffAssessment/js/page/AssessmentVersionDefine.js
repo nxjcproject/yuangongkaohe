@@ -407,9 +407,9 @@ function LoadProcessLine(mValue) {
                 panelHeight: 'auto',
                 data: myData.rows,
                 onSelect: function (record) {
-                    
+                    myOrganizationId = record.OrganizationID;
                     ///加载变量
-                    LoadAssessmentObjects(record.OrganizationID);
+                     LoadAssessmentObjects(myOrganizationId);
                 }
             });
         },
@@ -418,18 +418,19 @@ function LoadProcessLine(mValue) {
         }
     });
 }
-function LoadAssessmentObjects(myOrganizationId)
+function LoadAssessmentObjects(organizationId)
 {  
     $.ajax({
         type: "POST",
         url: "AssessmentVersionDefine.aspx/GetAssessmentObjects",
-        data: "{myType:'" + myType + "',myValueType:'" + myValueType + "',myOrganizationId:'" + myOrganizationId + "'}",
+        data: "{myType:'" + myType + "',myValueType:'" + myValueType + "',myOrganizationId:'" + organizationId + "'}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
             var myData = jQuery.parseJSON(msg.d);
             $('#eAssessment').combotree({
-                valueField: 'id',
+                //valueField: 'id',
+                valueField: 'variableId',
                 textField: 'text',
                 //valueField: 'OrganizationID',
                 //textField: 'Name',
@@ -487,13 +488,13 @@ function editDetailFun(IsEdit, editContrastId) {
         eId = data.Id;
         // $('#eAssessmentObject').combobox('setValue', data.AssessmentId);
         $('#eAssessmentObject').combobox('select', data.AssessmentId);
-        $('#eProcessLine').combobox('setText', data.OrganizationName);
+        $('#eProcessLine').combobox('setText', data.OrganizationName); 
        
         eAssessmentObjectId = data.AssessmentId;
         eAssessmentName = data.AssessmentName;
         eObjectId = data.ObjectId;
         eObjectName = data.ObjectName;
-        $('#eAssessment').combotree('setText', data.ObjectName);
+        $('#eAssessment').val(data.ObjectName);
         eProcessLine = data.OrganizationID;
         LoadAssessmentObjects(eProcessLine);
     

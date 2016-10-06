@@ -75,8 +75,13 @@ namespace StaffAssessment.Web.UI_StaffAssessment
             }
             else if (calculateObjects.StructureName.Equals("grid"))
             {
-                table.Columns["ProductionLineLevelCode"].ColumnName = "id";
-                json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
+                table.Columns.Add("ProcessLevelCode", typeof(string));
+                for (int i=0; i < table.Rows.Count;i++ )
+                {
+                    table.Rows[i]["ProcessLevelCode"] = "P" + (i + 1).ToString("00");
+                }
+                json = EasyUIJsonParser.TreeGridJsonParser.DataTableToJsonByLevelCode(table, "ProcessLevelCode");
+
             }
             return json;         
         }

@@ -45,7 +45,7 @@ namespace StaffAssessment.Service
                             and A.[WorkingSectionID] =@mWorkingSectionID
                             group by B.[StaffInfoItemId],B.[StaffInfoID],B.[Name]
                             union
-                            SELECT '0' as id,0 as [StaffInfoID], '全部' as [text],'' as [Name]
+                            SELECT '0' as id,'0' as [StaffInfoID], '全部' as [text],'' as [Name]
                             order by  B.[StaffInfoID]";
             SqlParameter[] para = { new SqlParameter("@mProductionId", mProductionId) ,
                                   new SqlParameter("@mWorkingSectionID", mWorkingSectionID) 

@@ -38,7 +38,7 @@
                        </td>    
                          <td>岗位:</td>
                         <td >                               
-                           <input class="easyui-combobox" type="text" id="workingSection" style="width:85px" />                 
+                           <input class="easyui-combobox" type="text" id="workingSection" style="width:100px" />                 
                         </td>                            
                     </tr>
                  </table>  
@@ -46,7 +46,7 @@
                         <tr>
                         <td>考核组：</td>
                         <td>                           
-                            <input id="AssessmentGroup" class="easyui-combogrid" required="required" style="width:70px"/>                   
+                            <input id="AssessmentGroup" class="easyui-combogrid" required="required" style="width:100px"/>                   
                         </td>
            
                          <td>周期：</td>

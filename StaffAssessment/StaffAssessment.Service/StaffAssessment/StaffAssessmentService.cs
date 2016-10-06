@@ -44,7 +44,7 @@ namespace StaffAssessment.Service.StaffAssessment
                                     ,[Type]
                                     ,[OrganizationID]
                                     ,[WorkingSectionID]
-                                FROM [NXJC_DEV].[dbo].[tz_Assessment]
+                                FROM [dbo].[tz_Assessment]
                                 where [OrganizationID]=@mOrganizationID
                                 and [WorkingSectionID]=@mWorkingSectionID";
             SqlParameter[] para = { new SqlParameter("@mOrganizationID", mOrganizationID) ,
@@ -200,38 +200,9 @@ namespace StaffAssessment.Service.StaffAssessment
             }
             return tztable;                
         }
-        //public static DataTable GetStaffAssessmentCalculateResult(string mProductionID, string mWorkingSectionID, string mStaffId, string mStaffName, string mGroupName, string mGroupId, string mStartTime, string mVersionId, string mStatisticalCycle) 
-        //{
-        //    DataTable table = new DataTable();
-
-        //    return table;
-        //}
         public static DataTable GetStaffAssessmentCalculateResult(DataTable tzTable, string mVersionId, string mStatisticalCycle)
         {
 
-            //mVersionId,        7
-            //mStatisticalCycle  8
-            // [Id]
-            //,[AssessmentId]
-            //,[ObjectId]
-            //,[OrganizaitonID]
-            //,[KeyId]
-            //,[WeightedValue]
-            //,[BestValue]
-            //,[WorstValue]
-            //,[AssessmenScore]
-            //,[WeightedAverageCredit]
-
-            //tzTable字段
-            //table.Columns.Add("KeyId", typeof(string));
-            //table.Columns.Add("StaffID", typeof(string));
-            //table.Columns.Add("mStaffName", typeof(string));
-            //table.Columns.Add("OrganizationID", typeof(string));
-            //table.Columns.Add("WorkingSectionID", typeof(string));
-            //table.Columns.Add("StartTime", typeof(string));
-            //table.Columns.Add("EndTime", typeof(string));
-            //table.Columns.Add("TimeStamp", typeof(string));
-            //table.Columns.Add("GroupId", typeof(string));    
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
 
@@ -242,8 +213,6 @@ namespace StaffAssessment.Service.StaffAssessment
             string mStaffId = "";
             string starTime = "";
             string endTime = "";
-
-
 
             DataTable myAssessmentItemsTable = GetStaffAssessmentItems(mVersionId);
             DataTable m_AssessmentTable = new DataTable();
@@ -307,18 +276,6 @@ namespace StaffAssessment.Service.StaffAssessment
         private static DataTable tztableStructrue() 
         {                  
             DataTable table = new DataTable();
-                      // [KeyId]
-                      //,[Name]
-                      //,[StaffID]
-                      //,[OrganizationID]
-                      //,[WorkingSectionID]
-                      //,[StartTime]
-                      //,[EndTime]
-                      //,[TimeStamp]
-                      //,[GroupId]
-                      //,[Remark]
-                      //,[Creator]
-                      //,[CreateTime]
             table.Columns.Add("KeyId", typeof(string));
             table.Columns.Add("Name", typeof(string));
             table.Columns.Add("StaffID", typeof(string));
@@ -337,17 +294,6 @@ namespace StaffAssessment.Service.StaffAssessment
         private static DataTable tableStructure() 
         {
             DataTable table = new DataTable();
-                      // [Id]
-                      //,[AssessmentId]
-                      //,[ObjectId]
-                      //,[OrganizationID]
-                      //,[KeyId]
-                      //,[WeightedValue]
-                      //,[BestValue]
-                      //,[WorstValue]
-                      //,[AssessmenScore]
-                      //,[WeightedAverageCredit]
-                      //mStaffName
             table.Columns.Add("Id", typeof(string));
             table.Columns.Add("AssessmentId", typeof(string));
             table.Columns.Add("ObjectId", typeof(string));

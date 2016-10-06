@@ -17,3 +17,14 @@ E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Debug\Sta
 E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.pdb
 E:\NXJC\项目文件\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\RunIndicators.dll
 E:\NXJC\项目文件\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Service.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Service.pdb
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\AutoMapper.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\RunIndicators.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\SqlServerDataAdapter.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Infrastructure.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Infrastructure.pdb
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.csprojResolveAssemblyReference.cache
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.pdb

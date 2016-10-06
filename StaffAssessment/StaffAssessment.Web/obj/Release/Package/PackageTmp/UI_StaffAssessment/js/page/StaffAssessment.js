@@ -87,13 +87,13 @@ function LoadAssessmentGroupGrid() {
         success: function (msg) {
             var myData = jQuery.parseJSON(msg.d);
             $('#AssessmentGroup').combogrid({
-                panelWidth: '138px',
+                panelWidth: '180px',
                 panelHeight: 'auto',
                 idField: 'GroupId',
                 textField: 'Name',
                 columns: [[
                     { field: 'GroupId', title: '', width: 40, hidden: true },
-                    { field: 'Name', title: '考核分组', width: 60 },
+                    { field: 'Name', title: '考核分组', width: 100 },
                     {
                         field: 'StatisticalCycle', title: '考核周期', align: 'center', width: 75, formatter: function (value, row, index) {
                             if (value == "day") {

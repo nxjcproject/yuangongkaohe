@@ -24,13 +24,13 @@ function LoadAssessmentGroupGrid() {
         success: function (msg) {
             var myData = jQuery.parseJSON(msg.d);
             $('#AssessmentGroup').combogrid({
-                panelWidth: '138px',
+                panelWidth: '180px',
                 panelHeight: 'auto',
                 idField: 'GroupId',
                 textField: 'Name',
                 columns: [[
                     { field: 'GroupId', title: '', width: 40, hidden: true },
-                    { field: 'Name', title: '考核分组', width: 60 },
+                    { field: 'Name', title: '考核分组', width: 100 },
                     {
                         field: 'StatisticalCycle', title: '考核周期', align: 'center', width: 75, formatter: function (value, row, index) {
                             if (value == "day") {
@@ -55,13 +55,7 @@ function LoadAssessmentGroupGrid() {
                     } else if (mStatisticalCycle == "year") {
                          mAssessmentCycle = "年";
                     }
-                    // $("#AssessmentCycle").val(mAssessmentCycle);
-                  //  $('#AssessmentCycle').textbox('setValue', "月");
                     $('#AssessmentCycle').textbox('setText', mAssessmentCycle);
-                    //mProductionName = row.OrganizationName;
-                    //$('#productionName').textbox('setText', mProductionName);
-                    //mProductionID = row.OrganizationID;
-                    //LoadStaffInfo(mProductionID, mWorkingSectionID);
                 }
             });
         },
@@ -123,58 +117,6 @@ function LoadMainDataGrid(type, myData) {
         $('#grid_Main').datagrid('loadData', myData);
     }
 }
-//function LoadStaffInfo(productionId, workingSectionId) {
-//    $.ajax({
-//        type: "POST",
-//        url: "StaffAssessment.aspx/GetStaffInfo",
-//        data: " {mOrganizationID:'" + productionId + "',mWorkingSectionID:'" + workingSectionId + "'}",
-//        contentType: "application/json; charset=utf-8",
-//        dataType: "json",
-//        success: function (msg) {
-//            var myData = jQuery.parseJSON(msg.d);
-//            $('#Staff').combobox({
-//                data: myData.rows,
-//                valueField: 'id',
-//                textField: 'text',
-//                panelHeight: 'auto',
-//                onSelect: function (record) {
-//                    mStaffId = record.id;
-//                }
-//            });
-//            $('#Staff').combobox('select', 0);
-//        },
-//        error: function () {
-//            // $("#grid_Main").datagrid('loadData', []);
-//            $.messager.alert('失败', '加载失败！');
-//        }
-//    });
-//}
-//function LoadAssessmentVersion(productionId, workingSectionId) {
-//    $.ajax({
-//        type: "POST",
-//        url: "StaffAssessmentRanking.aspx/GetAssessmentVersion",
-//        data: " {mOrganizationID:'" + productionId + "',mWorkingSectionID:'" + workingSectionId + "'}",
-//        contentType: "application/json; charset=utf-8",
-//        dataType: "json",
-//        success: function (msg) {
-//            var myData = jQuery.parseJSON(msg.d);
-//            $('#AssessmentVersion').combobox({
-//                data: myData.rows,
-//                valueField: 'KeyId',
-//                textField: 'Name',
-//                panelHeight: 'auto',
-//                onSelect: function (record) {
-//                    mVersionId = record.KeyId;
-//                }
-//            });
-//            $('#Staff').combobox('select', 0);
-//        },
-//        error: function () {
-//            // $("#grid_Main").datagrid('loadData', []);
-//            $.messager.alert('失败', '加载失败！');
-//        }
-//    });
-//}
 function Query() {
     if (mProductionID == "" && mWorkingSectionID == "" && mGroupId == "" && mStatisticalCycle == "") {
         $.messager.alert('提示', '请选择未选项！');

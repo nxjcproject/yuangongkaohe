@@ -139,7 +139,7 @@
                      <tr>
 	    			<td>考核元素：</td>
 	    			<td> 
-                         <input id="eAssessment" class="easyui-combotree" required="required" style="width:200px">
+                         <input id="eAssessment" class="easyui-combotree"  style="width:200px">
 	    			</td>
 	    		    </tr>
 	    		    <tr>

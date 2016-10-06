@@ -9,3 +9,14 @@ E:\NXJC\项目文件\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\R
 E:\NXJC\项目文件\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.pdb
 E:\NXJC\项目文件\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\RunIndicators.dll
 E:\NXJC\项目文件\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Service.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Service.pdb
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\AutoMapper.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\RunIndicators.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\SqlServerDataAdapter.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Infrastructure.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Infrastructure.pdb
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.csprojResolveAssemblyReference.cache
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.pdb

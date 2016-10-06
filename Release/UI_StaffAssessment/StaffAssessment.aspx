@@ -53,7 +53,7 @@
                                         </td>  --%>
                                          <td style="width:60px">考核版本：</td>
                                          <td>                           
-                                            <input id="AssessmentVersion" class="easyui-combobox" style="width:80px"/>                   
+                                            <input id="AssessmentVersion" class="easyui-combobox" style="width:100px"/>                   
                                         </td>
                                            </tr>
                                    </table>
@@ -61,7 +61,7 @@
                                     <tr>
                                          <td style="width:60px">考核组：</td>
                                             <td>                           
-                                                <input id="AssessmentGroup" class="easyui-combogrid" required="required" style="width:80px"/>                   
+                                                <input id="AssessmentGroup" class="easyui-combogrid" required="required" style="width:100px"/>                   
                                             </td>
                                          <td style="width:60px">考核周期：</td>
                                          <td>                           
@@ -84,7 +84,7 @@
                                         </td>    
                                          <td>员工:</td>
                                          <td >                               
-                                            <input id="Staff" class="easyui-combobox" style="width:80px" />               
+                                            <input id="Staff" class="easyui-combobox" style="width:100px" />               
                                         </td> 
                                          <td>
                                             <a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="Query()">查询</a>

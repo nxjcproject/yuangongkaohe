@@ -8,3 +8,8 @@ E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\bin\De
 E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.csprojResolveAssemblyReference.cache
 E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.dll
 E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.pdb
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\bin\Debug\StaffAssessment.Infrastructure.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\bin\Debug\StaffAssessment.Infrastructure.pdb
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.csprojResolveAssemblyReference.cache
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.dll
+D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.pdb

@@ -26,13 +26,13 @@ function LoadAssessmentGroupGrid() {
         success: function (msg) {
             var myData = jQuery.parseJSON(msg.d);
             $('#AssessmentGroup').combogrid({
-                panelWidth: '138px',
+                panelWidth: '180px',
                 panelHeight: 'auto',
                 idField: 'GroupId',
                 textField: 'Name',
                 columns: [[
                     { field: 'GroupId', title: '', width: 40, hidden: true },
-                    { field: 'Name', title: '考核分组', width: 60 },
+                    { field: 'Name', title: '考核分组', width: 100 },
                     {
                         field: 'StatisticalCycle', title: '考核周期', align: 'center', width: 75, formatter: function (value, row, index) {
                             if (value == "day") {
@@ -117,7 +117,6 @@ function LoadMainDataGrid(type, myData) {
                   {
                       field: 'edit', title: '详表', width: 80, formatter: function (value, row, index) {
                           var str = '<a href="#" onclick="AssessmentResultdetail(\'' + row.KeyId + '\')"><img class="iconImg" src = "/lib/ealib/themes/icons/search.png" title="详表" onclick="AssessmentResultdetail(\'' + row.KeyId + '\')"/>详表</a>';
-                          //E:\NXJC\项目文件\yuangongkaohe\StaffAssessment\StaffAssessment.Web\lib\ealib\themes\icons\search.png
                           return str;
                       }
                   }
@@ -212,7 +211,6 @@ function AssessmentResultdetail(mAssessmentId) {
     var data = $('#grid_Main').datagrid('getSelected');  
     $('#display_StaffName').textbox('setText', data.StaffName);
     $('#display_Date').textbox('setText', data.Time);
-    //var mOrganizationID=data.
     /////
 
     $('#AssessmentResultDetailTable').window('open');
@@ -261,11 +259,6 @@ function InitialDate(type) {
             textField: 'type',
             data: mData,
             panelHeight: 'auto'
-            //,
-            //onSelect: function (node) {
-            //    mValue = node.value;
-            //    InitialDate(mValue)
-            //}
         });
         $('#date_year').combobox('setValue', nowDate.getFullYear() - 1);
     }
