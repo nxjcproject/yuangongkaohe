@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>考核项定义</title>
     <link rel="stylesheet" type="text/css" href="/lib/ealib/themes/gray/easyui.css"/>
 	<link rel="stylesheet" type="text/css" href="/lib/ealib/themes/icon.css"/>
     <link rel="stylesheet" type="text/css" href="/lib/extlib/themes/syExtIcon.css"/>
@@ -83,7 +83,7 @@
                <div data-options="region:'center',border:false" style="background:#eee;">
                      <table id="grid_Main"class="easyui-datagrid"></table>
                 </div>
-                <div data-options="region:'south',border:false,split:true" style="height:400px;background:#eee;">
+                <div data-options="region:'south',border:false,split:true" style="height:249px;background:#eee;">
                    <table id="grid_MainDetail"class="easyui-datagrid"></table>
               </div>
            </div>
@@ -149,18 +149,18 @@
                      <input id="eWeightedValue" type="text" class="easyui-numberbox" required="required" style="width:60px">
 	    			</td>
 	    		    </tr>       
-                     <tr>
+                     <%--<tr>
 	    			<td>最好值：</td> 
 	    			<td>
                         <input id="eBestValue" type="text" class="easyui-numberbox" required="required" style="width:60px">
 	    			</td>
-	    		    </tr>
-                     <tr>
+	    		    </tr>--%>
+                     <%--<tr>
 	    			<td>最差值：</td> 
 	    			<td>
                        <input id="eWorstValue" type="text" class="easyui-numberbox" required="required" style="width:60px">
 	    			</td>
-	    		    </tr>
+	    		    </tr>--%>
                      <tr>
                     <td>标准指标：</td> 
 	    			<td>
@@ -179,18 +179,18 @@
                        <input id="eScoreFactor" type="text" class="easyui-numberbox" required="required" style="width:60px">
 	    			</td>
 	    		    </tr>
-                    <tr>
+                    <%--<tr>
                     <td>最大得分：</td> 
 	    			<td>
                        <input id="eMaxScore" type="text" class="easyui-numberbox" required="required" style="width:60px">
 	    			</td>
-	    		    <tr>
-                    <tr>
+	    		    </tr>--%>
+                    <%--<tr>
                     <td>最小得分：</td> 
 	    			<td>
                        <input id="eMinScore" type="text" class="easyui-numberbox" required="required" style="width:60px">
 	    			</td>
-	    		    </tr>
+	    		    </tr>--%>
                      <tr>   
                     <td>是否可用：</td> 
 	    			<td>

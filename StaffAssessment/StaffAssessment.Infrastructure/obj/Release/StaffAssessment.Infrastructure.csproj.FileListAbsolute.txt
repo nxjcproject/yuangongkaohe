@@ -6,3 +6,7 @@ D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.
 D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\bin\Release\StaffAssessment.Infrastructure.pdb
 D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Release\StaffAssessment.Infrastructure.dll
 D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Release\StaffAssessment.Infrastructure.pdb
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\bin\Release\StaffAssessment.Infrastructure.dll
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\bin\Release\StaffAssessment.Infrastructure.pdb
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Release\StaffAssessment.Infrastructure.dll
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Release\StaffAssessment.Infrastructure.pdb

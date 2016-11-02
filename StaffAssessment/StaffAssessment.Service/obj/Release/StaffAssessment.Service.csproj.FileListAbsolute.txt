@@ -20,3 +20,13 @@ D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.
 D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.csprojResolveAssemblyReference.cache
 D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.dll
 D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.pdb
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Service.dll
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Service.pdb
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\AutoMapper.dll
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\RunIndicators.dll
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.dll
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Infrastructure.dll
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Infrastructure.pdb
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.dll
+C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.pdb

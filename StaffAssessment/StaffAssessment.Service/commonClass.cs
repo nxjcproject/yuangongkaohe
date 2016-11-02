@@ -59,6 +59,7 @@ namespace StaffAssessment.Service
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
             string mySql = @"SELECT * FROM [dbo].[system_Organization]
                              where  [OrganizationID] like @mOrganizationID+'%'
+                             and [LevelType]='ProductionLine'
                              and ENABLED=1
                              order by LevelCode ";
             SqlParameter para = new SqlParameter("@mOrganizationID", mOrganizationId);

@@ -90,7 +90,7 @@ function LoadMainDataGrid(type, myData) {
                         field: 'edit', title: '编辑', width: 150, formatter: function (value, row, index) {
                             var str = "";
                             str = '<a href="#" onclick="editFun(true,\'' + row.ShiftDescriptionID + '\')"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_edit.png" title="编辑页面" onclick="editFun(true,\'' + row.ShiftDescriptionID + '\')"/>编辑</a>';
-                            str = str + '<a href="#" onclick="deleteFun(\'' + row.ShiftDescriptionID + '\')"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_deleteFun.png" title="删除页面"  onclick="deleteFun(\'' + row.ShiftDescriptionID + '\')"/>删除</a>';
+                            str = str + '<a href="#" onclick="deleteFun(\'' + row.ShiftDescriptionID + '\')"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_delete.png" title="删除页面"  onclick="deleteFun(\'' + row.ShiftDescriptionID + '\')"/>删除</a>';
                             //str = str + '<img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_deleteFun.png" title="删除页面" onclick="deleteFunPageFun(\'' + row.id + '\');"/>删除';
                             return str;
                         }

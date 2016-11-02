@@ -56,6 +56,8 @@ namespace StaffAssessment.Web.UI_StaffAssessment
         {
             DataTable table = commonClass.GetProcessLine(mOrganizationId);
             string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
+            //string[] para = { "OrganizationID", "text" };
+            //string json = EasyUIJsonParser.TreeGridJsonParser.DataTableToJsonByLevelCode(table, "LevelCode");
             return json;      
         }
         [WebMethod]

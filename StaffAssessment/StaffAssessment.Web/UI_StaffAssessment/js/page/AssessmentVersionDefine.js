@@ -192,13 +192,13 @@ function LoadMainDataGridDetail(type, myData) {
                     { field: 'ObjectName', title: '考核元素', width: 120 },                  
                     { field: 'OrganizationName', title: '产线', width: 80 },
                     { field: 'WeightedValue', title: '权重', width: 60, align: 'center' },
-                    { field: 'BestValue', title: '最好值', width: 60, align: 'center' },
-                    { field: 'WorstValue', title: '最差值', width: 60, align: 'center' },
+                    //{ field: 'BestValue', title: '最好值', width: 60, align: 'center' },
+                    //{ field: 'WorstValue', title: '最差值', width: 60, align: 'center' },
                     { field: 'StandardValue', title: '标准指标', width: 60, align: 'center' },
                     { field: 'StandardScore', title: '标准分', width: 60, align: 'center' },
                     { field: 'ScoreFactor', title: '得分因子', width: 60, align: 'center' },
-                    { field: 'MaxScore', title: '最大得分', width: 60, align: 'center' },
-                    { field: 'MinScore', title: '最小得分', width: 60, align: 'center' },
+                    //{ field: 'MaxScore', title: '最大得分', width: 60, align: 'center' },
+                    //{ field: 'MinScore', title: '最小得分', width: 60, align: 'center' },
                     {
                         field: 'Enabled', title: '启用标志', width: 80, align: 'center', formatter: function (value, row, index) {
                             if (value=='True') {return value = "是";} else if (value =='False') { return value = "否"; }

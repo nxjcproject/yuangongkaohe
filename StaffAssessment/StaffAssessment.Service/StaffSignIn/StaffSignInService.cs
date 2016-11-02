@@ -190,7 +190,7 @@ namespace StaffAssessment.Service.StaffSignIn
                                     new SqlParameter("@mWorkingSectionID",mWorkingSectionID),
                                     new SqlParameter("@mShifts",mShifts),
                                     new SqlParameter("@mCreator",mUserName),
-                                    new SqlParameter("@mCreateTime",DateTime.Now.ToString())
+                                    new SqlParameter("@mCreateTime",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
                                  };
                mreturn = factory.ExecuteSQL(insertSQL,param);                
            }

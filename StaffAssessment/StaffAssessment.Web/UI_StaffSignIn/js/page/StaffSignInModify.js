@@ -59,14 +59,14 @@ function LoadMainDataGrid(type, myData) {
                     { field: 'WorkingSectionName', title: '岗位', width: 80, align: "left" },
                     { field: 'Creator', title: '创建人', width: 80, align: "center" },
                     { field: 'CreateTime', title: '创建时间', width: 120, align: "center" },
-                    { field: 'Remark', title: '备注', width: 100, align: "center" },
-                    {
-                        field: 'edit', title: '编辑', width: 150, formatter: function (value, row, index) {
-                            var str = "";
-                            str = '<a href="#" onclick="editStaffSignIn()"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_edit.png" title="编辑页面" onclick="editStaffSignIn()"/>编辑</a>';
-                            str = str + '<a href="#" onclick="deleteStaffSignIn()"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_delete.png" title="删除页面"  onclick="deleteStaffSignIn()"/>删除</a>';
-                       return str;
-                    }}
+                    { field: 'Remark', title: '备注', width: 100, align: "center" }
+                    //{
+                    //    field: 'edit', title: '编辑', width: 150, formatter: function (value, row, index) {
+                    //        var str = "";
+                    //        str = '<a href="#" onclick="editStaffSignIn()"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_edit.png" title="编辑页面" onclick="editStaffSignIn()"/>编辑</a>';
+                    //        str = str + '<a href="#" onclick="deleteStaffSignIn()"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_delete.png" title="删除页面"  onclick="deleteStaffSignIn()"/>删除</a>';
+                    //   return str;
+                    //}}
             ]],
             fit: true,
             toolbar: "#toorBar",
@@ -115,12 +115,12 @@ function historyQuery()
         }
     });
 }
-function addFun() {
-    $.messager.alert('失败', '操作失败！');
-}
-function editStaffSignIn() {
-    $.messager.alert('失败', '操作失败！');
-}
-function deleteStaffSignIn() {
-    $.messager.alert('失败', '操作失败！');
-}
+//function addFun() {
+//    $.messager.alert('失败', '操作失败！');
+//}
+//function editStaffSignIn() {
+//    $.messager.alert('失败', '操作失败！');
+//}
+//function deleteStaffSignIn() {
+//    $.messager.alert('失败', '操作失败！');
+//}
