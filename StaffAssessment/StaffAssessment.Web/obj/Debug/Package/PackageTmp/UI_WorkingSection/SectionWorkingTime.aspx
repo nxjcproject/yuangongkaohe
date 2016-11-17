@@ -36,7 +36,7 @@
                         <td >                               
                             <input id="organizationName" class="easyui-textbox" readonly="readonly"style="width:120px" />               
                        </td>   
-                        <td>岗位:</td> 
+                        <td>岗位类型:</td> 
                          <td >                               
                             <input id="section" class="easyui-combobox" type="text" style="width:120px" />             
                        </td>                
@@ -62,7 +62,7 @@
             <div id="AddandEditor" class="easyui-window" title="岗位工作时间" data-options="modal:true,closed:true,iconCls:'icon-edit',minimizable:false,maximizable:false,collapsible:false,resizable:false" style="width:420px;height:auto;padding:10px 60px 20px 60px">
 	    	    <table>
                     <tr>
-	    			    <td>岗位：</td> 
+	    			    <td>岗位类型：</td> 
 	    			    <td><input class="easyui-combobox" type="text" id="workingSection" style="width:120px" />                  
                            <%--<input class="easyui-textbox" id="productionName"readonly="readonly"  style="width:80px"/>--%>           
 	    			    </td>
@@ -92,7 +92,7 @@
 	    	    </table>
 	            <div style="text-align:center;padding:5px;margin-left:-18px;">
 	    	        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="save()">保存</a>
-	    	        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="$('#staffInfoEditor').window('close');">取消</a>
+	    	        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="$('#AddandEditor').window('close');">取消</a>
 	            </div>
             </div>
             <!-- 编辑窗口开始 -->

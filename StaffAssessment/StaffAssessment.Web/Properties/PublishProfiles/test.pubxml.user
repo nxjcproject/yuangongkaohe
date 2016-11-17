@@ -13,8 +13,11 @@
     <File Include="bin/AutoMapper.dll">
       <publishTime>10/17/2016 15:06:40</publishTime>
     </File>
+    <File Include="bin/AutoSetParameters.dll">
+      <publishTime>11/07/2016 15:25:20</publishTime>
+    </File>
     <File Include="bin/EasyUIJsonParser.dll">
-      <publishTime>10/17/2016 15:06:41</publishTime>
+      <publishTime>07/05/2015 11:29:03</publishTime>
     </File>
     <File Include="bin/InternalMemeryRestore.dll">
       <publishTime>10/17/2016 15:06:41</publishTime>
@@ -29,16 +32,19 @@
       <publishTime>10/17/2016 15:06:41</publishTime>
     </File>
     <File Include="bin/StaffAssessment.dll">
-      <publishTime>10/17/2016 15:06:40</publishTime>
+      <publishTime>11/08/2016 21:45:21</publishTime>
     </File>
     <File Include="bin/StaffAssessment.Infrastructure.dll">
       <publishTime>10/31/2016 09:13:52</publishTime>
     </File>
     <File Include="bin/StaffAssessment.Service.dll">
-      <publishTime>10/31/2016 11:19:35</publishTime>
+      <publishTime>11/12/2016 09:47:45</publishTime>
     </File>
     <File Include="bin/StaffAssessment.Web.dll">
-      <publishTime>10/31/2016 11:19:36</publishTime>
+      <publishTime>11/12/2016 09:47:46</publishTime>
+    </File>
+    <File Include="bin/Standard_GB16780-2012.dll">
+      <publishTime>11/07/2016 15:25:19</publishTime>
     </File>
     <File Include="bin/WebStyleBaseForEnergy.dll">
       <publishTime>10/17/2016 15:06:41</publishTime>
@@ -4604,37 +4610,49 @@
       <publishTime>10/18/2016 10:11:23</publishTime>
     </File>
     <File Include="UI_StaffAssessment/AssessmentVersionDefine.aspx">
-      <publishTime>10/31/2016 10:37:51</publishTime>
+      <publishTime>11/08/2016 08:56:43</publishTime>
+    </File>
+    <File Include="UI_StaffAssessment/IndexConfigure.aspx">
+      <publishTime>11/07/2016 11:52:01</publishTime>
     </File>
     <File Include="UI_StaffAssessment/js/page/AssessmentGroup.js">
       <publishTime>10/17/2016 15:21:34</publishTime>
     </File>
     <File Include="UI_StaffAssessment/js/page/AssessmentVersionDefine.js">
-      <publishTime>10/31/2016 10:39:17</publishTime>
+      <publishTime>11/11/2016 11:53:11</publishTime>
+    </File>
+    <File Include="UI_StaffAssessment/js/page/IndexConfigure.js">
+      <publishTime>11/11/2016 20:13:03</publishTime>
     </File>
     <File Include="UI_StaffAssessment/js/page/StaffAssessment.js">
-      <publishTime>10/17/2016 15:06:41</publishTime>
+      <publishTime>11/11/2016 20:13:59</publishTime>
     </File>
     <File Include="UI_StaffAssessment/js/page/StaffAssessmentRanking.js">
-      <publishTime>10/17/2016 15:06:41</publishTime>
+      <publishTime>11/11/2016 11:53:15</publishTime>
+    </File>
+    <File Include="UI_StaffAssessment/js/page/StaffAssessmentResult.js">
+      <publishTime>11/11/2016 19:39:07</publishTime>
     </File>
     <File Include="UI_StaffAssessment/js/page/StaffAssessmentResultDetial.js">
-      <publishTime>10/17/2016 15:06:41</publishTime>
+      <publishTime>11/11/2016 22:23:30</publishTime>
     </File>
     <File Include="UI_StaffAssessment/StaffAssessment.aspx">
-      <publishTime>10/18/2016 10:12:49</publishTime>
+      <publishTime>11/10/2016 15:13:15</publishTime>
     </File>
     <File Include="UI_StaffAssessment/StaffAssessmentRanking.aspx">
-      <publishTime>10/31/2016 09:43:10</publishTime>
+      <publishTime>11/11/2016 10:05:59</publishTime>
+    </File>
+    <File Include="UI_StaffAssessment/StaffAssessmentResult.aspx">
+      <publishTime>11/12/2016 10:44:07</publishTime>
     </File>
     <File Include="UI_StaffAssessment/StaffAssessmentResultDetial.aspx">
-      <publishTime>10/31/2016 09:41:46</publishTime>
+      <publishTime>11/12/2016 10:44:01</publishTime>
     </File>
     <File Include="UI_StaffSignIn/js/page/StaffSignIn.js">
-      <publishTime>10/17/2016 15:06:41</publishTime>
+      <publishTime>11/10/2016 14:53:14</publishTime>
     </File>
     <File Include="UI_StaffSignIn/js/page/StaffSignInModify.js">
-      <publishTime>10/31/2016 11:07:09</publishTime>
+      <publishTime>11/11/2016 11:36:22</publishTime>
     </File>
     <File Include="UI_StaffSignIn/StaffSignIn.aspx">
       <publishTime>10/17/2016 15:06:41</publishTime>
@@ -4643,19 +4661,19 @@
       <publishTime>10/31/2016 09:03:20</publishTime>
     </File>
     <File Include="UI_WorkingSection/js/page/SectionWorkingTime.js">
-      <publishTime>10/31/2016 09:00:37</publishTime>
+      <publishTime>11/11/2016 20:20:38</publishTime>
     </File>
     <File Include="UI_WorkingSection/js/page/WorkingSectionDefine.js">
-      <publishTime>10/17/2016 15:06:41</publishTime>
+      <publishTime>11/10/2016 10:37:25</publishTime>
     </File>
     <File Include="UI_WorkingSection/SectionWorkingTime.aspx">
-      <publishTime>10/17/2016 15:06:41</publishTime>
+      <publishTime>11/11/2016 11:53:16</publishTime>
     </File>
     <File Include="UI_WorkingSection/WorkingSectionDefine.aspx">
-      <publishTime>10/17/2016 15:06:41</publishTime>
+      <publishTime>11/10/2016 10:17:36</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/31/2016 11:19:41</publishTime>
+      <publishTime>11/12/2016 11:08:56</publishTime>
     </File>
   </ItemGroup>
 </Project>

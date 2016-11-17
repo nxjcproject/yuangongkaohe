@@ -142,7 +142,13 @@
                          <input id="eAssessment" class="easyui-combotree"  style="width:200px">
 	    			</td>
 	    		    </tr>
-	    		    <tr>
+	    		    <%--<tr>--%>
+                        <tr>
+                    <td>标准指标：</td> 
+	    			<td>
+                        <input id="eStandardValue" type="text" class="easyui-numberbox" required="required" style="width:60px">
+	    			</td>
+	    		    </tr>
                      <tr>
 	    			<td>权重：</td> 
 	    			<td>
@@ -161,18 +167,13 @@
                        <input id="eWorstValue" type="text" class="easyui-numberbox" required="required" style="width:60px">
 	    			</td>
 	    		    </tr>--%>
-                     <tr>
-                    <td>标准指标：</td> 
-	    			<td>
-                        <input id="eStandardValue" type="text" class="easyui-numberbox" required="required" style="width:60px">
-	    			</td>
-	    		    </tr>
-                     <tr>
+                     
+                     <%--<tr>
                     <td>标准分：</td> 
 	    			<td>
                        <input id="eStandardScore" type="text" class="easyui-numberbox" required="required" style="width:60px">
 	    			</td>
-	    		    </tr>
+	    		    </tr>--%>
                      <tr>
                     <td>得分因子：</td> 
 	    			<td>

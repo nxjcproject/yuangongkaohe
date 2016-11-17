@@ -88,19 +88,19 @@ function LoadWorkingSection(mValue) {
         success: function (msg) {
             var myData = jQuery.parseJSON(msg.d);
             var comboboxData = new Array();
-            comboboxData[0] = { "WorkingSectionID": "0", "WorkingSectionName": "全部" };
+            comboboxData[0] = { "WorkingSectionItemID": "0", "WorkingSectionName": "全部" };
             for (i = 1; i < myData.rows.length + 1; i++) {
                 comboboxData[i] = myData.rows[i - 1];
             }
             $('#workingSection').combobox({
-                valueField: 'WorkingSectionID',
+                valueField: 'WorkingSectionItemID',
                 textField: 'WorkingSectionName',
                 panelHeight: 'auto',
                 data: comboboxData
             });
             $('#workingSection').combobox('select','0');
             $('#eWorkingSection').combobox({
-                valueField: 'WorkingSectionID',
+                valueField: 'WorkingSectionItemID',
                 textField: 'WorkingSectionName',
                 panelHeight: 'auto',
                 data: myData.rows
@@ -115,9 +115,9 @@ function Query() {
     if (mOrganizationId == "" ) {
         $.messager.alert('提示', '请选择组织机构！');
     } else {
-        mWorkingSectionID = $('#workingSection').combobox('getValue');
+        mWorkingSectionItemID = $('#workingSection').combobox('getValue');
         var mUrl = "AssessmentVersionDefine.aspx/GetAssessmentVersionDefine";
-        var mData = " {mOrganizationId:'" + mOrganizationId + "',mWorkingSectionID:'" + mWorkingSectionID + "'}";
+        var mData = " {mOrganizationId:'" + mOrganizationId + "',mWorkingSectionItemID :'" + mWorkingSectionItemID + "'}";
         $.ajax({
                 type: "POST",
                 url: mUrl,
@@ -192,10 +192,10 @@ function LoadMainDataGridDetail(type, myData) {
                     { field: 'ObjectName', title: '考核元素', width: 120 },                  
                     { field: 'OrganizationName', title: '产线', width: 80 },
                     { field: 'WeightedValue', title: '权重', width: 60, align: 'center' },
-                    { field: 'BestValue', title: '最好值', width: 60, align: 'center' },
-                    { field: 'WorstValue', title: '最差值', width: 60, align: 'center' },
+                    //{ field: 'BestValue', title: '最好值', width: 60, align: 'center' },
+                    //{ field: 'WorstValue', title: '最差值', width: 60, align: 'center' },
                     { field: 'StandardValue', title: '标准指标', width: 60, align: 'center' },
-                    { field: 'StandardScore', title: '标准分', width: 60, align: 'center' },
+                    //{ field: 'StandardScore', title: '标准分', width: 60, align: 'center' },
                     { field: 'ScoreFactor', title: '得分因子', width: 60, align: 'center' },
                     //{ field: 'MaxScore', title: '最大得分', width: 60, align: 'center' },
                     //{ field: 'MinScore', title: '最小得分', width: 60, align: 'center' },
@@ -228,16 +228,39 @@ function LoadMainDataGridDetail(type, myData) {
         $('#grid_MainDetail').datagrid('loadData', myData);
     }
 }
+function GetIndex() {
+    var kaohe = $('#eAssessmentObject').combobox('getValue');
+    $('#eStandardValue').numberbox('disable', true);
+    $.ajax({
+        type: "POST",
+        url: "AssessmentVersionDefine.aspx/GetIndex",
+        data: "{myOrganizationId:'" + myOrganizationId + "',mAssessmentId:'" + kaohe + "',mObjectId:'" + yusu + "'}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (msg) {
+            var m_MsgData = jQuery.parseJSON(msg.d);
+            if (m_MsgData.total != 0) {
+                $('#eStandardValue').numberbox('setValue', m_MsgData.rows[0].StandardIndex);
+            }
+            else {
+                $('#eStandardValue').numberbox('setValue', null);
+            }
+        },
+        error: function handleError() {
+        $.messager.alert('失败', '获取数据失败');
+    }
+    });
+}
 function save()
 {
-    eWorkingSectionID = $('#eWorkingSection').combobox('getValue');
+    eWorkingSectionItemID = $('#eWorkingSection').combobox('getValue');
     eName = $('#eAssessmentName').textbox('getText');
     eType = $('#eAssessmentype').textbox('getText');
     eRemark = $('#eRemark').textbox('getText');
     if (mOrganizationId == "") {
         $.messager.alert('提示', '请选择产线！');
     } else {
-        if (eWorkingSectionID==""||eName == "" || eType == "") {
+        if (eWorkingSectionItemID==""|| eName=="" || eType == "") {
             $.messager.alert('提示', '请填写未填项！');
         }
         else {
@@ -245,10 +268,10 @@ function save()
             var mData = "";
             if (IsAdd) {
                 mUrl = "AssessmentVersionDefine.aspx/AddAssessmentVersion";
-                mData = " {mOrganizationId:'" + mOrganizationId + "',mWorkingSectionID:'" + eWorkingSectionID + "',mName:'" + eName + "',mType:'" + eType  + "',mRemark:'" + eRemark + "'}";
+                mData = " {mOrganizationId:'" + mOrganizationId + "',mWorkingSectionItemID:'" + eWorkingSectionItemID + "',mName:'" + eName + "',mType:'" + eType  + "',mRemark:'" + eRemark + "'}";
             } else {
                 mUrl = "AssessmentVersionDefine.aspx/EditAssessmentVersion";
-                mData = " {mOrganizationId:'" + mOrganizationId + "',mWorkingSectionID:'" + eWorkingSectionID + "',mName:'" + eName + "',mType:'" + eType + "',mRemark:'" + eRemark + "',mKeyId:'" + eKeyId + "'}";
+                mData = " {mOrganizationId:'" + mOrganizationId + "',mWorkingSectionItemID:'" + eWorkingSectionItemID + "',mName:'" + eName + "',mType:'" + eType + "',mRemark:'" + eRemark + "',mKeyId:'" + eKeyId + "'}";
             }
             $.ajax({
                 type: "POST",
@@ -277,6 +300,7 @@ function save()
         }
     }
 }
+
 function addFun() {
     editFun(false);
 }
@@ -418,6 +442,7 @@ function LoadProcessLine(mValue) {
         }
     });
 }
+var yusu = '';
 function LoadAssessmentObjects(organizationId)
 {  
     $.ajax({
@@ -434,9 +459,14 @@ function LoadAssessmentObjects(organizationId)
                 textField: 'text',
                 //valueField: 'OrganizationID',
                 //textField: 'Name',
-                panelHeight: 'auto',
-                data: myData
+                panelHeight: '300',
+                data: myData,
+                onSelect: function (record) {
+                    yusu = record.VariableId;
+                    GetIndex();
+                }
             });
+            $('#eAssessment').combotree('setText', data.ObjectName);
            // $('#eAssessment').combotree('tree').tree("collapseAll");
         },
         error: function () {
@@ -479,16 +509,19 @@ function deleteDetailFun(editContrastId) {
         }
     )}
 }
+var data = "";
 function editDetailFun(IsEdit, editContrastId) {
+    //GetIndex()
     if (IsEdit) {
         IsAddDetail = false;  //编辑
         $('#grid_MainDetail').datagrid('selectRecord', editContrastId);
-        var data = $('#grid_MainDetail').datagrid('getSelected');
+        data = $('#grid_MainDetail').datagrid('getSelected');
         //
         eId = data.Id;
         // $('#eAssessmentObject').combobox('setValue', data.AssessmentId);
         $('#eAssessmentObject').combobox('select', data.AssessmentId);
-        $('#eProcessLine').combobox('setText', data.OrganizationName); 
+        $('#eProcessLine').combobox('setText', data.OrganizationName);
+        //$('#eAssessment').combotree('setText', data.ObjectName);
        
         eAssessmentObjectId = data.AssessmentId;
         eAssessmentName = data.AssessmentName;
@@ -497,8 +530,9 @@ function editDetailFun(IsEdit, editContrastId) {
         $('#eAssessment').val(data.ObjectName);
         eProcessLine = data.OrganizationID;
         LoadAssessmentObjects(eProcessLine);
+
     
-          
+        
         $('#eWeightedValue').numberbox('setValue', data.WeightedValue);
         eWeightedValue = data.WeightedValue;
         $('#eBestValue').numberbox('setValue', data.BestValue);
@@ -523,17 +557,17 @@ function editDetailFun(IsEdit, editContrastId) {
         $('#eAssessmentObject').combobox('clear');
         eAssessmentObjectId = "";
         eAssessmentName = "";
-        $('#eAssessment').combotree('setText',"");
+        $('#eAssessment').combotree('clear');
         eObjectId = "";
         eObjectName = "";
-        $('#eProcessLine').combobox('setText', "");
+        $('#eProcessLine').combobox('clear');
         eProcessLine = "";
         $('#eWeightedValue').numberbox('setValue', "");
         eWeightedValue = "";
-        $('#eBestValue').numberbox('setValue',"");
-        eBestValue = "";
-        $('#eWorstValue').numberbox('setValue',"");
-        eWorstValue = "";
+        $('#eBestValue').numberbox('setValue',"0");
+        eBestValue = "0";
+        $('#eWorstValue').numberbox('setValue',"0");
+        eWorstValue = "0";
 
         $('#eStandardValue').numberbox('setValue',"");
         eStandardValue = "";
@@ -568,19 +602,19 @@ function saveDetail() {
     eObjectName = t.text;
     //参数
     eWeightedValue = $('#eWeightedValue').numberbox('getValue');
-    eBestValue = $('#eBestValue').numberbox('getValue');
-    eWorstValue = $('#eWorstValue').numberbox('getValue');
+    //eBestValue = $('#eBestValue').numberbox('getValue');
+    //eWorstValue = $('#eWorstValue').numberbox('getValue');
     eStandardValue = $('#eStandardValue').numberbox('getValue');
-    eStandardScore = $('#eStandardScore').numberbox('getValue');
+    //eStandardScore = $('#eStandardScore').numberbox('getValue');
     eScoreFactor = $('#eScoreFactor').numberbox('getValue');
-    eMaxScore = $('#eMaxScore').numberbox('getValue');
-    eMinScore = $('#eMinScore').numberbox('getValue');
+    //eMaxScore = $('#eMaxScore').numberbox('getValue');
+    //eMinScore = $('#eMinScore').numberbox('getValue');
     eEnabled = $('#eEnabled').combobox('getValue');
 
     if (meditContrastId == "") {
         $.messager.alert('提示', '请选择考核项！');
     } else {
-        if (eAssessmentObjectId == "" || eObjectId == "" || eWeightedValue == "" || eBestValue == "" || eWorstValue == "" || eEnabled == "") {
+        if (eAssessmentObjectId == "" || eObjectId == "" || eWeightedValue == ""  || eEnabled == "") {
             $.messager.alert('提示', '请选择未填项！');
         }
         var mUrl = "";
@@ -590,24 +624,24 @@ function saveDetail() {
             mData = "{mOrganizationID:'" + myOrganizationId+ "',mKeyId:'" + meditContrastId+ "',mAssessmentId:'" + eAssessmentObjectId+ "',mAssessmentName:'" + eAssessmentName
                 + "',mObjectId:'" + eObjectId
                 + "',mObjectName:'" + eObjectName
-                + "',mWeightedValue:'" + eWeightedValue
                 + "',mBestValue:'" + eBestValue
                 + "',mWorstValue:'" + eWorstValue
+                + "',mWeightedValue:'" + eWeightedValue
                 + "',mStandardValue:'" + eStandardValue
                 + "',mStandardScore:'" + eStandardScore
-                + "',mScoreFactor:'" + eScoreFactor
                 + "',mMaxScore:'" + eMaxScore
                 + "',mMinScore:'" + eMinScore
+                + "',mScoreFactor:'" + eScoreFactor
                 + "',mEnabled:'" + eEnabled + "'}";
         } else {
             mUrl = "AssessmentVersionDefine.aspx/UptateGetAssessmentDetail";
             mData = "{mOrganizationID:'" + myOrganizationId + "',mKeyId:'" + meditContrastId + "',mAssessmentId:'" + eAssessmentObjectId + "',mAssessmentName:'" + eAssessmentName + "',mObjectId:'" + eObjectId + "',mObjectName:'" + eObjectName
                 + "',mWeightedValue:'" + eWeightedValue
-                + "',mBestValue:'" + eBestValue
-                + "',mWorstValue:'" + eWorstValue
                 + "',mStandardValue:'" + eStandardValue
                 + "',mStandardScore:'" + eStandardScore
                 + "',mScoreFactor:'" + eScoreFactor
+                + "',mBestValue:'" + eBestValue
+                + "',mWorstValue:'" + eWorstValue
                 + "',mMaxScore:'" + eMaxScore
                 + "',mMinScore:'" + eMinScore
                 + "',mEnabled:'" + eEnabled

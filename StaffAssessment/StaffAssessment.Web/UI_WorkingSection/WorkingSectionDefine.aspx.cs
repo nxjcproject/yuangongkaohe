@@ -46,20 +46,22 @@ namespace StaffAssessment.Web.UI_WorkingSection
             return json;   
         }
         [WebMethod]
-        public static int AddWorkingSection(string mWorkingSectionID,string mProductionName ,string mSectionType,string mWorkingSection,string mEnabed,string mEditor,string mRemark)
+        public static int AddWorkingSection(string mWorkingSectionID,string mProductionName ,string mSectionType,string mWorkingSectionName,string mWorkingSection,string mEnabed,string mRemark)
     //"{mWorkingSectionID:'" + mWorkingSectionID + "',mProductionName:'" + mProductionName + "',mSectionType:'" + mSectionType + "',mWorkingSection:'" + mWorkingSection + "',mEnabed:'" + mEnabed + "',mEditor:'" + mEditor + "',mRemark:'" + mRemark + "'}";        
         {
             //DataTable table = commonClass.GetProductionNameList(mOrganizationID);
             //string[] para = { "OrganizationID", "text" };
             //string json = EasyUIJsonParser.TreeGridJsonParser.DataTableToJsonByLevelCode(table, "LevelCode", para);
-            int result = WorkingSectionDefineService.InsertWorkingSection(mWorkingSectionID, mProductionName , mSectionType, mWorkingSection, mEnabed, mEditor, mRemark);
+            string mEditor = mUserName;
+            int result = WorkingSectionDefineService.InsertWorkingSection(mWorkingSectionID, mProductionName , mSectionType,mWorkingSectionName, mWorkingSection, mEnabed, mEditor, mRemark);
             return result;         
         }
         [WebMethod]
-        public static int EditWorkingSection(string mWorkingSectionItemID,string mWorkingSectionID,string mProductionName, string mSectionType, string mWorkingSection, string mEnabed, string mEditor, string mRemark)
+        public static int EditWorkingSection(string mWorkingSectionItemID, string mWorkingSectionID, string mProductionName, string mSectionType, string mWorkingSectionName, string mWorkingSection, string mEnabed, string mRemark)
      //"{mWorkingSectionItemID:'" + mWorkingSectionItemID + "',mWorkingSectionID:'" + mWorkingSectionID + "',mProductionName:'" + mProductionName + "',mSectionType:'" + mSectionType + "',mWorkingSection:'" + mWorkingSection + "',mEnabed:'" + mEnabed + "',mEditor:'" + mEditor + "',mRemark:'" + mRemark + "'}";         
         {
-            int result = WorkingSectionDefineService.EditWorkingSection(mWorkingSectionItemID,mWorkingSectionID, mProductionName, mSectionType, mWorkingSection, mEnabed, mEditor, mRemark);
+            string mEditor = mUserName;
+            int result = WorkingSectionDefineService.EditWorkingSection(mWorkingSectionItemID, mWorkingSectionID, mProductionName, mSectionType, mWorkingSectionName,mWorkingSection, mEnabed, mEditor, mRemark);
             return result;     
         }
         [WebMethod]

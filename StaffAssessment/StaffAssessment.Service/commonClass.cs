@@ -32,7 +32,7 @@ namespace StaffAssessment.Service
             DataTable dt = factory.Query(mySql, para);
             return dt;
         }
-        public static DataTable GetStaffInfoTable(string mProductionId, string mWorkingSectionID)
+        public static DataTable GetStaffInfoTable(string mProductionId, string mWorkingSectionItemID)
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
@@ -42,13 +42,13 @@ namespace StaffAssessment.Service
                             FROM [dbo].[shift_staffSignInRecord] A,[dbo].[system_StaffInfo] B
                             where A.[StaffID]=B.[StaffInfoItemId]
                             and A.[OrganizationID] = @mProductionId
-                            and A.[WorkingSectionID] =@mWorkingSectionID
+                            and A.[WorkingSectionID] =@mWorkingSectionItemID
                             group by B.[StaffInfoItemId],B.[StaffInfoID],B.[Name]
                             union
                             SELECT '0' as id,'0' as [StaffInfoID], '全部' as [text],'' as [Name]
                             order by  B.[StaffInfoID]";
             SqlParameter[] para = { new SqlParameter("@mProductionId", mProductionId) ,
-                                  new SqlParameter("@mWorkingSectionID", mWorkingSectionID) 
+                                  new SqlParameter("@mWorkingSectionItemID", mWorkingSectionItemID) 
                                   };
             DataTable dt = factory.Query(mySql, para);
             return dt;
@@ -99,14 +99,16 @@ namespace StaffAssessment.Service
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
-            string mySql = @"SELECT [WorkingSectionID]
-                                  ,[WorkingSectionType] as [WorkingSectionName]
-                                  ,[OrganizationID]
-                                  ,[DisplayIndex]
-                                  ,[Enabled]
-                              FROM [dbo].[system_WorkingSectionType]
-                              where [OrganizationID] = @mOrganizationID
-                              and [Enabled]=1
+            string mySql = @"SELECT A.[WorkingSectionID]
+                                  ,A.[WorkingSectionType] as [WorkingSectionName]
+                                  ,A.[OrganizationID]
+                                  ,B.[AssessmentCoefficient]
+                                  ,A.[DisplayIndex]
+                                  ,A.[Enabled]
+                              FROM [dbo].[system_WorkingSectionType] A,[dbo].[system_WorkingSection] B
+                              where A.[OrganizationID] = @mOrganizationID
+                              and A.[WorkingSectionID]=B.[WorkingSectionID]
+                              and A.[Enabled]=1
                               order by [WorkingSectionName] ";
             SqlParameter para = new SqlParameter("@mOrganizationID", mOrganizationID);
             DataTable dt = factory.Query(mySql, para);

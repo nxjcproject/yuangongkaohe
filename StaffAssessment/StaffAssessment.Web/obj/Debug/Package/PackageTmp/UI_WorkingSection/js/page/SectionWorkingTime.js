@@ -40,7 +40,7 @@ function LoadWorkingSection(mValue) {
                 valueField: 'WorkingSectionID',
                 textField: 'WorkingSectionName',
                 panelHeight: 'auto',
-                data: comboboxData,
+                data: comboboxData,              
                 onSelect: function (record) {
                     WorkingSectionID = record.WorkingSectionID;
                 }
@@ -199,8 +199,13 @@ function editFun(IsEdit, editContrastId) {
         IsAdd = false;
         $('#grid_Main').datagrid('selectRecord', editContrastId);
         var data = $('#grid_Main').datagrid('getSelected');
-
-        $('#workingSection').combogrid('setText', data.WorkingSectionName);
+        $('#workingSection').combobox('clear');
+        $('#shift').combobox('clear');
+        $('#shift').combobox('setText', '');
+        $('#workingSection').combogrid('setText', '');
+        //$('#workingSection').combobox('clear');
+        //$('#shift').combobox('clear');
+        $('#workingSection').combobox('setValue', data.WorkingSectionID);
         //$('#productionName').textbox('setText', data.OrganizationName);
         
         $('#shift').combobox('setText', data.Shifts);
@@ -214,6 +219,8 @@ function editFun(IsEdit, editContrastId) {
     }
     else {
         IsAdd = true;
+        $('#workingSection').combobox('clear');
+        $('#shift').combobox('clear');
 
         $('#workingSection').combogrid('setText', '');
         $('#productionName').textbox('setText', '');

@@ -101,6 +101,7 @@ function LoadStaffInfo(mValue) {
     //});
 }
 var mWorkingSectionID = "";
+var mWorkingSectionItemID = "";
 function LoadWorkingSection(mValue) {
     $.ajax({
         type: "POST",
@@ -117,6 +118,7 @@ function LoadWorkingSection(mValue) {
                 data: myData.rows,
                 onSelect: function (record) {
                     mWorkingSectionID = record.WorkingSectionID;
+                    mWorkingSectionItemID = record.WorkingSectionItemID;
                 }
             });
         },
@@ -145,7 +147,7 @@ function Query() {
         $.ajax({
             type: "POST",
             url: "StaffSignIn.aspx/GetStaffIn",
-            data: "{mOrganizationID: '" + mOrganizationID + "',mWorkingSectionID:'" + mWorkingSectionID + "'}",
+            data: "{mOrganizationID: '" + mOrganizationID + "',mWorkingSectionID:'" + mWorkingSectionID + "',mWorkingSectionItemID:'" + mWorkingSectionItemID + "'}",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (msg) {
@@ -207,7 +209,7 @@ function signInFun(signInID) {
         $.ajax({
             type: "POST",
             url: "StaffSignIn.aspx/InsertSignIn",
-            data: " {mOrganizationID:'" + mOrganizationID + "',mVdate:'" + mVdate + "',mStaffId:'" + itemId + "',mWorkingSectionID:'" + mWorkingSectionID + "',mShifts:'" + mShiftsID + "'}",
+            data: " {mOrganizationID:'" + mOrganizationID + "',mVdate:'" + mVdate + "',mStaffId:'" + itemId + "',mWorkingSectionItemID:'" + mWorkingSectionItemID + "',mShifts:'" + mShiftsID + "'}",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (msg) {

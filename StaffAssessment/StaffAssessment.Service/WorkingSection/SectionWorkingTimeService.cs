@@ -11,6 +11,24 @@ namespace StaffAssessment.Service.WorkingSection
 {
     public class SectionWorkingTimeService
     {
+        public static DataTable GetWorkingSectionList(string mOrganizationID)
+        {
+            string connectionString = ConnectionStringFactory.NXJCConnectionString;
+            ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
+            string mySql = @"SELECT A.[WorkingSectionID]
+			                    ,[DisplayIndex]
+			                    ,A.[WorkingSectionType] as [WorkingSectionName]
+			                    ,A.[OrganizationID]
+			                    [DisplayIndex]
+			                    ,A.[Enabled]
+			                    FROM [dbo].[system_WorkingSectionType] A
+			                    where A.[OrganizationID] = 'zc_nxjc_byc_byf'";
+            SqlParameter[] para = {
+                                    new SqlParameter("@mOrganizationID", mOrganizationID)
+                                 };
+            DataTable dt = factory.Query(mySql, para);
+            return dt;
+        }
         public static DataTable GetQueryDataTable(string mOrganizationID, string mWorkingSectionID)
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;

@@ -41,7 +41,7 @@ namespace StaffAssessment.Web.UI_WorkingSection
         [WebMethod]
         public static string GetWorkingSection(string mOrganizationID) 
         {
-            DataTable table = commonClass.GetWorkingSectionList(mOrganizationID);
+            DataTable table = SectionWorkingTimeService.GetWorkingSectionList(mOrganizationID);
             string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
             return json;   
         }

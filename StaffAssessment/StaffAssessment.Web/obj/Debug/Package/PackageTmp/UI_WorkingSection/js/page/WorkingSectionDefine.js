@@ -85,8 +85,8 @@ function LoadMainDataGrid(type, myData) {
         $('#grid_Main').datagrid({
             columns: [[
                     { field: 'OrganizationName', title: '所在产线', width: 100 },
-                    {field: 'WorkingSectionName', title: '职位名称', width: 80},
-                    {field: 'Type', title: '岗位', width: 60},                 
+                    { field: 'WorkingSectionName', title: '岗位', width: 100 },
+                    { field: 'AssessmentCoefficient', title: '考核系数', width: 80 },                   
                     { field: 'Creator', title: '编辑人', width: 80},
                     { field: 'CreatedTime', title: '编辑时间', width: 120 },
                     {
@@ -136,7 +136,7 @@ function LoadSectionTypeData() {
                 var myData = jQuery.parseJSON(msg.d);
                // LoadSectionTypeDataGrid("last",myData);
                 var mydata = myData.rows;
-                mydata.push({ "id": "0", "WorkingSectionID": "", "WorkingSectionType": "添加岗位", "OrganizationID": "", "Enabled": "" });
+                mydata.push({ "id": "0", "WorkingSectionID": "", "WorkingSectionType": "添加岗位类别", "OrganizationID": "", "Enabled": "" });
                 mydata.sort(function sortNumber(a, b) {
                     return a.id - b.id
                 });
@@ -213,9 +213,10 @@ function save() {
    
         //mProductionName = $('#productionName').combotree('getValue');
         mSectionType = $('#sectionType').combobox('getText');
-        mWorkingSection = $('#workingSection').textbox('getText');
+        mWorkingSection = $('#assessmentCoefficient').numberbox('getText');
+        var mWorkingSectionName = $('#workingSection').textbox('getText');
         mEnabed = $('#Enabed').combobox('getValue');
-        mEditor = $('#editor').textbox('getValue');
+        //mEditor = $('#editor').textbox('getValue');
         mRemark = $('#remark').textbox('getValue');
         if (mProductionName == "" || mSectionType == "" || mWorkingSection == "")
             $.messager.alert('提示', '请填写未填项!');
@@ -224,10 +225,10 @@ function save() {
             var mdata = "";
             if (IsAdd) {
                 mUrl = "WorkingSectionDefine.aspx/AddWorkingSection";
-                mdata = "{mWorkingSectionID:'" + mWorkingSectionID + "',mProductionName:'" + mProductionName + "',mSectionType:'" + mSectionType + "',mWorkingSection:'" + mWorkingSection + "',mEnabed:'" + mEnabed + "',mEditor:'" + mEditor + "',mRemark:'" + mRemark + "'}";
+                mdata = "{mWorkingSectionID:'" + mWorkingSectionID + "',mProductionName:'" + mProductionName + "',mSectionType:'" + mSectionType + "',mWorkingSectionName:'" + mWorkingSectionName + "',mWorkingSection:'" + mWorkingSection + "',mEnabed:'" + mEnabed + "',mRemark:'" + mRemark + "'}";
             } else if (IsAdd == false) {
                 mUrl = "WorkingSectionDefine.aspx/EditWorkingSection";
-                mdata = "{mWorkingSectionItemID:'" + mWorkingSectionItemID + "',mWorkingSectionID:'" + mWorkingSectionID + "',mProductionName:'" + mProductionName + "',mSectionType:'" + mSectionType + "',mWorkingSection:'" + mWorkingSection + "',mEnabed:'" + mEnabed + "',mEditor:'" + mEditor + "',mRemark:'" + mRemark + "'}";
+                mdata = "{mWorkingSectionItemID:'" + mWorkingSectionItemID + "',mWorkingSectionID:'" + mWorkingSectionID + "',mProductionName:'" + mProductionName + "',mSectionType:'" + mSectionType + "',mWorkingSectionName:'" + mWorkingSectionName + "',mWorkingSection:'" + mWorkingSection + "',mEnabed:'" + mEnabed + "',mRemark:'" + mRemark + "'}";
             }
             $.ajax({
                 type: "POST",
@@ -275,6 +276,7 @@ function editWorkingDefine(IsEdit, editContrastId) {
         mSectionType = data.Type;
         mWorkingSectionID = data.WorkingSectionID;
         $('#workingSection').textbox('setText', data.WorkingSectionName);
+        $('#assessmentCoefficient').textbox('setText', data.AssessmentCoefficient);
         mWorkingSection = data.WorkingSectionName;
         $('#Enabed').combobox('setValue', data.Enabled);
         mEnabed=data.Enabled;
@@ -299,6 +301,7 @@ function editWorkingDefine(IsEdit, editContrastId) {
         mSectionType = "";
         mWorkingSectionID = "";
         $('#workingSection').textbox('setText', '');
+        $('#assessmentCoefficient').textbox('setText', '');
         mWorkingSection = "";
         $('#Enabed').combobox('setValue', 'True');
         mEnabed = "True";

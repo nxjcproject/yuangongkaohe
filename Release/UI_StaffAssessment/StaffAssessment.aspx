@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>考核计算</title>
     <link rel="stylesheet" type="text/css" href="/lib/ealib/themes/gray/easyui.css"/>
 	<link rel="stylesheet" type="text/css" href="/lib/ealib/themes/icon.css"/>
     <link rel="stylesheet" type="text/css" href="/lib/extlib/themes/syExtIcon.css"/>
@@ -45,7 +45,7 @@
                                       <tr>--%>
                                          <td style="width:40px">岗位:</td>
                                         <td >                               
-                                           <input class="easyui-combobox" type="text" id="workingSection" style="width:80px" />                 
+                                           <input class="easyui-combobox" type="text" id="workingSection" style="width:120px" />                 
                                         </td>  
                                       <%--     <td>产线:</td>
                                         <td >                               

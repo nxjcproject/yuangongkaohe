@@ -18,6 +18,7 @@ function onOrganisationTreeClick(node) {
     mOrganizationId=node.OrganizationId;
     LoadStaffInfo(mOrganizationId);
 }
+var id = '';
 function LoadStaffInfo(mValue) {
     $.ajax({
         type: "POST",
@@ -27,7 +28,7 @@ function LoadStaffInfo(mValue) {
         dataType: "json",
         success: function (msg) {     
             var myData = jQuery.parseJSON(msg.d);
-            var addRow = { "text": "全部", "id": "0", "Name": "全部", "OrganizationID": "", "WorkingTeamName": "", "WorkingSectionID": "", "Sex": "", "PhoneNumber": "", "Enabled": "" };
+            var addRow = { "text": "全部", "StaffInfoItemId": "0", "Name": "全部", "OrganizationID": "", "WorkingTeamName": "", "WorkingSectionID": "", "Sex": "", "PhoneNumber": "", "Enabled": "" };
             var mdata = myData.rows;
             mdata.push(addRow);
             mdata.sort(function sortNumber(a, b) {
@@ -35,11 +36,12 @@ function LoadStaffInfo(mValue) {
             });
             $('#Staff').combobox({
                 data:myData.rows,
-                valueField: 'id',
+                valueField: 'StaffInfoItemId',
                 textField: 'text',
                 panelHeight: 'auto',
                 onSelect: function (record) {
-                    mStaffId= record.id;
+                    mStaffId = record.StaffInfoItemId;
+                    
                 }
             });
             $('#Staff').combobox('setValue', '0');

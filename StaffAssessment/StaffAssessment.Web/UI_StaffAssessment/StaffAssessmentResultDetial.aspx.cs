@@ -46,7 +46,7 @@ namespace StaffAssessment.Web.UI_StaffAssessment
         [WebMethod]
         public static string GetWorkingSection(string mOrganizationId)
         {
-            DataTable table = commonClass.GetWorkingSectionList(mOrganizationId);
+            DataTable table = StaffAssessmentResultDetialService.GetWorkingSectionList(mOrganizationId);
             string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
             return json;
         }       
@@ -58,9 +58,9 @@ namespace StaffAssessment.Web.UI_StaffAssessment
             return json;
         }
         [WebMethod]
-        public static string GetAssessmentResultdetail(string mAssessmentId ,string mOrganizationID)
+        public static string GetAssessmentResultdetail(string mAssessmentId)
         {
-            DataTable table = StaffAssessmentResultDetialService.GetAssessmentResultdetailTable(mAssessmentId, mOrganizationID);       
+            DataTable table = StaffAssessmentResultDetialService.GetAssessmentResultdetailTable(mAssessmentId);       
             string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
             return json;
         }

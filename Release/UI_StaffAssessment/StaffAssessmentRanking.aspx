@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>考核名次查询</title>
     <link rel="stylesheet" type="text/css" href="/lib/ealib/themes/gray/easyui.css"/>
 	<link rel="stylesheet" type="text/css" href="/lib/ealib/themes/icon.css"/>
     <link rel="stylesheet" type="text/css" href="/lib/extlib/themes/syExtIcon.css"/>
@@ -37,7 +37,7 @@
                         <td >                               
                             <input id="organizationName" class="easyui-textbox" readonly="readonly"style="width:80px" />               
                        </td>    
-                         <td>岗位:</td>
+                         <td>岗位类型:</td>
                         <td >                               
                            <input class="easyui-combobox" type="text" id="workingSection" style="width:100px" />                 
                         </td>  

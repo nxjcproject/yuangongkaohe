@@ -32,7 +32,7 @@ namespace StaffAssessment.Web.UI_StaffAssessment
         [WebMethod]
         public static string GetWorkingSection(string mOrganizationId)
         {
-            DataTable table = commonClass.GetWorkingSectionList(mOrganizationId);
+            DataTable table = AssessmentVersionDefineService.GetWorkingSectionList(mOrganizationId);
             string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
             return json;
         }
@@ -44,10 +44,10 @@ namespace StaffAssessment.Web.UI_StaffAssessment
             return json;
         }
         [WebMethod]
-        public static string GetAssessmentVersionDefine(string mOrganizationId, string mWorkingSectionID) 
+        public static string GetAssessmentVersionDefine(string mOrganizationId, string mWorkingSectionItemID) 
       //" {mOrganizationId:'" + mOrganizationId + "',mWorkingSectionID:'" + mWorkingSectionID + "'}";
         {
-            DataTable table = AssessmentVersionDefineService.GetAssessmentVersionDefine(mOrganizationId, mWorkingSectionID);
+            DataTable table = AssessmentVersionDefineService.GetAssessmentVersionDefine(mOrganizationId, mWorkingSectionItemID);
             string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
             return json;
         }
@@ -88,10 +88,11 @@ namespace StaffAssessment.Web.UI_StaffAssessment
             return json;         
         }
          [WebMethod]
-        public static int AddAssessmentVersion(string mOrganizationId, string mWorkingSectionID, string mName, string mType, string mRemark) 
+        public static int AddAssessmentVersion(string mOrganizationId, string mWorkingSectionItemID, string mName,string mType, string mRemark) 
  //" {mOrganizationId:'" + mOrganizationId + "',mWorkingSectionID:'" + eWorkingSectionID + "',mName:'" + eName + "',mType:'" + eType  + "',mRemark:'" + eRemark + "'}";      
         {
-            int result = AssessmentVersionDefineService.ToAddAssessmentVersion(mOrganizationId, mWorkingSectionID, mName, mType, mUserName, mRemark);
+            //string mName = mUserName;
+            int result = AssessmentVersionDefineService.ToAddAssessmentVersion(mOrganizationId, mWorkingSectionItemID, mName, mType, mUserName, mRemark);
             return result;
         }
         /// <summary>
@@ -164,6 +165,13 @@ namespace StaffAssessment.Web.UI_StaffAssessment
         {
             int result = AssessmentVersionDefineService.ToDeleteAssessmentVersion(mKeyId);
             return result;          
+        }
+        [WebMethod]
+        public static string GetIndex(string myOrganizationId, string mAssessmentId, string mObjectId)
+        {
+            DataTable table = AssessmentVersionDefineService.GetStandardIndexIndex(myOrganizationId, mAssessmentId, mObjectId);
+            string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
+            return json;
         }
     }
 }

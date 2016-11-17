@@ -11,6 +11,32 @@ namespace StaffAssessment.Service.StaffAssessment
 {
     public class AssessmentVersionDefineService
     {
+        public static DataTable GetWorkingSectionList(string mOrganizationID)
+        {
+            string connectionString = ConnectionStringFactory.NXJCConnectionString;
+            ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
+            string mySql = @"SELECT [WorkingSectionItemID]
+                                  ,[WorkingSectionID]
+                                  ,[WorkingSectionName]
+                                  ,[AssessmentCoefficient]
+                                  ,[Type]
+                                  ,[OrganizationID]
+                                  ,[DisplayIndex]
+                                  ,[ElectricityQuantityId]
+                                  ,[OutputId]
+                                  ,[CoalWeightId]
+                                  ,[Creator]
+                                  ,[CreatedTime]
+                                  ,[Enabled]
+                                  ,[Remarks]
+                              FROM [NXJC].[dbo].[system_WorkingSection]
+                              where [OrganizationID] like @mOrganizationID+ '%'";
+            SqlParameter[] para = {
+                                    new SqlParameter("@mOrganizationID", mOrganizationID)
+                                 };
+            DataTable dt = factory.Query(mySql, para);
+            return dt;
+        }
         public static DataTable GetAssessmentVersionDefine(string mOrganizationId)
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
@@ -31,64 +57,65 @@ namespace StaffAssessment.Service.StaffAssessment
                           and A.[OrganizationID]=@mOrganizationId";
             SqlParameter para = new SqlParameter("@mOrganizationId", mOrganizationId);
             DataTable table = factory.Query(mySql, para);
-            return table;          
+            return table;
         }
-        public static DataTable GetAssessmentVersionDefine(string mProductionID, string mWorkingSectionID)
+        public static DataTable GetAssessmentVersionDefine(string mProductionID, string mWorkingSectionItemID)
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
             DataTable table = new DataTable();
-            if (mWorkingSectionID.Equals("0"))
+            if (mWorkingSectionItemID.Equals("0"))
             {
                 string mySql = @" SELECT A.[KeyId]
                               ,A.[Name]
                               ,A.[Type]
 	                          ,B.[Name] as [OrganizationName]
                               ,A.[OrganizationID]
-	                          ,C.[WorkingSectionType] as [WorkingSectionName]
+	                          ,C.[WorkingSectionName]
                               ,A.[WorkingSectionID]
                               ,A.[Remark]
                               ,A.[Creator]
                               ,A.[CreateTime]
-                          FROM [dbo].[tz_Assessment] A,[dbo].[system_Organization] B,[dbo].[system_WorkingSectionType] C
+                          FROM [dbo].[tz_Assessment] A,[dbo].[system_Organization] B,[dbo].[system_WorkingSection] C
                           where A.[OrganizationID]=B.[OrganizationID]
-                          and A.[WorkingSectionID]=C.[WorkingSectionID]
+                          and A.[WorkingSectionID]=C.[WorkingSectionItemID]
                           and A.[OrganizationID]=@mProductionID";
                 table = factory.Query(mySql, new SqlParameter("@mProductionID", mProductionID));
             }
-            else {
+            else
+            {
                 string mySql = @" SELECT A.[KeyId]
                               ,A.[Name]
                               ,A.[Type]
 	                          ,B.[Name] as [OrganizationName]
                               ,A.[OrganizationID]
-	                          ,C.[WorkingSectionType] as [WorkingSectionName]
+	                          ,C.[WorkingSectionName]
                               ,A.[WorkingSectionID]
                               ,A.[Remark]
                               ,A.[Creator]
                               ,A.[CreateTime]
-                          FROM [dbo].[tz_Assessment] A,[dbo].[system_Organization] B,[dbo].[system_WorkingSectionType] C
+                          FROM [dbo].[tz_Assessment] A,[dbo].[system_Organization] B,[dbo].[system_WorkingSection] C
                           where A.[OrganizationID]=B.[OrganizationID]
-                          and A.[WorkingSectionID]=C.[WorkingSectionID]
+                          and A.[WorkingSectionID]=C.[WorkingSectionItemID]
                           and A.[OrganizationID]=@mProductionID
-                          and A.[WorkingSectionID]=@mWorkingSectionID";
+                          and A.[WorkingSectionID]=@mWorkingSectionItemID";
                 SqlParameter[] para = { 
                                         new SqlParameter("@mProductionID", mProductionID) ,
-                                        new SqlParameter("@mWorkingSectionID", mWorkingSectionID)
+                                        new SqlParameter("@mWorkingSectionItemID", mWorkingSectionItemID)
                                        };
                 table = factory.Query(mySql, para);
             }
-           
-           
+
+
             return table;
         }
         public static Model_CalculateObjects GetCalculateObjects(string myType, string myValueType, string myOrganizationId)
         {
-           string connectionString = ConnectionStringFactory.NXJCConnectionString;
+            string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
             return Table_CalculateObjects.GetCalculateObjects(myType, myValueType, myOrganizationId, factory);
         }
-        public static int ToAddAssessmentVersion(string mOrganizationId, string mWorkingSectionID, string mName, string mType, string mUserName, string mRemark)
+        public static int ToAddAssessmentVersion(string mOrganizationId, string mWorkingSectionItemID, string mName, string mType, string mUserName, string mRemark)
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
@@ -106,21 +133,21 @@ namespace StaffAssessment.Service.StaffAssessment
                            ,@mName
                            ,@mType
                            ,@mProductionID
-                           ,@mWorkingSectionID
+                           ,@mWorkingSectionItemID
                            ,@mRemark
                            ,@mCreator
                            ,@mTime)";
             SqlParameter[] para = { 
                                     new SqlParameter("@mKeyId", System.Guid.NewGuid().ToString()) ,
                                     new SqlParameter("@mProductionID", mOrganizationId) ,
-                                    new SqlParameter("@mWorkingSectionID", mWorkingSectionID) ,
+                                    new SqlParameter("@mWorkingSectionItemID", mWorkingSectionItemID) ,
                                     new SqlParameter("@mName", mName) ,
                                     new SqlParameter("@mType", mType) ,
                                     new SqlParameter("@mCreator", mUserName) ,
                                     new SqlParameter("@mRemark", mRemark) ,
-                                    new SqlParameter("@mTime", DateTime.Now.ToString())
+                                    new SqlParameter("@mTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
                                      };
-            int result = factory.ExecuteSQL(mySql,para);
+            int result = factory.ExecuteSQL(mySql, para);
             return result;
         }
         /// <summary>
@@ -161,7 +188,7 @@ namespace StaffAssessment.Service.StaffAssessment
             int result = factory.ExecuteSQL(mySql, para);
             return result;
         }
-        public static DataTable GetAssessmentVersionDetailTable(string mKeyId) 
+        public static DataTable GetAssessmentVersionDetailTable(string mKeyId)
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
@@ -187,10 +214,10 @@ namespace StaffAssessment.Service.StaffAssessment
                       and A.[KeyId]=@mKeyId";
             SqlParameter para = new SqlParameter("@mKeyId", mKeyId);
             DataTable table = factory.Query(mySql, para);
-            return table;          
-        
+            return table;
+
         }
-        public static int ToAddAssessmentDetail(string mOrganizationID, string mKeyId, string mAssessmentId,string mAssessmentName, string mObjectId,string mObjectName, string mWeightedValue, string mBestValue, string mWorstValue, string mStandardValue, string mStandardScore, string mScoreFactor, string mMaxScore, string mMinScore, string mEnabled)
+        public static int ToAddAssessmentDetail(string mOrganizationID, string mKeyId, string mAssessmentId, string mAssessmentName, string mObjectId, string mObjectName, string mWeightedValue, string mBestValue, string mWorstValue, string mStandardValue, string mStandardScore, string mScoreFactor, string mMaxScore, string mMinScore, string mEnabled)
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
@@ -291,19 +318,20 @@ namespace StaffAssessment.Service.StaffAssessment
                                     new SqlParameter("@mEnabled", mEnabled)
                                      };
             int result = factory.ExecuteSQL(mySql, para);
-            return result;        
+            return result;
         }
         public static int ToDeleteAssessmentDetail(string mId)
-        { 
+        {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
-                ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
-                string mySql = @"DELETE FROM [dbo].[assessment_AssessmentDetail] 
+            ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
+            string mySql = @"DELETE FROM [dbo].[assessment_AssessmentDetail] 
                                  WHERE [Id] =@mId";
-                SqlParameter para =  new SqlParameter("@mId", mId) ;
-                int result = factory.ExecuteSQL(mySql, para);
-                return result;      
+            SqlParameter para = new SqlParameter("@mId", mId);
+            int result = factory.ExecuteSQL(mySql, para);
+            return result;
         }
-        public static int ToDeleteAssessmentVersion(string mKeyId) {
+        public static int ToDeleteAssessmentVersion(string mKeyId)
+        {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
             string mySql = @"
@@ -311,7 +339,31 @@ namespace StaffAssessment.Service.StaffAssessment
                             delete from  [dbo].[assessment_AssessmentDetail] where [KeyId]=@mKeyId";
             SqlParameter para = new SqlParameter("@mKeyId", mKeyId);
             int result = factory.ExecuteSQL(mySql, para);
-            return result;           
+            return result;
+        }
+        public static DataTable GetStandardIndexIndex(string mOrganizationId, string AssessmentId, string ObjectId)
+        {
+            string connectionString = ConnectionStringFactory.NXJCConnectionString;
+            ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
+            string mySql = @"SELECT [ID]
+                              ,[OrganizationID]
+                              ,[AssessmentId]
+                              ,[ObjectId]
+                              ,[StandardIndex]
+                              ,[Editor]
+                              ,[EditTime]
+                              ,[Remark]
+                          FROM [NXJC].[dbo].[assessment_StandardIndex]
+                          where OrganizationID=@mOrganizationId
+                                and AssessmentId=@AssessmentId
+                                and ObjectId=@ObjectId";
+            SqlParameter[] para = {
+                                        new SqlParameter("@mOrganizationId", mOrganizationId),
+                                        new SqlParameter("@AssessmentId", AssessmentId),
+                                        new SqlParameter("@ObjectId", ObjectId)
+                                    };
+            DataTable table = factory.Query(mySql, para);
+            return table;
         }
     }
 }

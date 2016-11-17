@@ -43,6 +43,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="AutoSetParameters, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AutoSetParameters.dll</HintPath>
+    </Reference>
     <Reference Include="EasyUIJsonParser">
       <HintPath>..\..\..\bin\EasyUIJsonParser.dll</HintPath>
     </Reference>
@@ -53,7 +57,11 @@
     </Reference>
     <Reference Include="StaffAssessment, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\lib\StaffAssessment.dll</HintPath>
+      <HintPath>..\..\..\..\QQ接收文件\StaffAssessment(3)\StaffAssessment\StaffAssessment\bin\Debug\StaffAssessment.dll</HintPath>
+    </Reference>
+    <Reference Include="Standard_GB16780-2012, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Standard_GB16780-2012.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
@@ -1612,13 +1620,17 @@
     <Content Include="lib\pllib\themes\jquery.jqplot.min.css" />
     <Content Include="UI_StaffAssessment\AssessmentGroup.aspx" />
     <Content Include="UI_StaffAssessment\AssessmentVersionDefine.aspx" />
+    <Content Include="UI_StaffAssessment\IndexConfigure.aspx" />
     <Content Include="UI_StaffAssessment\js\page\AssessmentGroup.js" />
     <Content Include="UI_StaffAssessment\js\page\AssessmentVersionDefine.js" />
+    <Content Include="UI_StaffAssessment\js\page\IndexConfigure.js" />
     <Content Include="UI_StaffAssessment\js\page\StaffAssessment.js" />
     <Content Include="UI_StaffAssessment\js\page\StaffAssessmentRanking.js" />
+    <Content Include="UI_StaffAssessment\js\page\StaffAssessmentResult.js" />
     <Content Include="UI_StaffAssessment\js\page\StaffAssessmentResultDetial.js" />
     <Content Include="UI_StaffAssessment\StaffAssessment.aspx" />
     <Content Include="UI_StaffAssessment\StaffAssessmentRanking.aspx" />
+    <Content Include="UI_StaffAssessment\StaffAssessmentResult.aspx" />
     <Content Include="UI_StaffAssessment\StaffAssessmentResultDetial.aspx" />
     <Content Include="UI_StaffSignIn\js\page\StaffSignIn.js" />
     <Content Include="UI_StaffSignIn\js\page\StaffSignInModify.js" />
@@ -1648,6 +1660,13 @@
     <Compile Include="UI_StaffAssessment\AssessmentVersionDefine.aspx.designer.cs">
       <DependentUpon>AssessmentVersionDefine.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI_StaffAssessment\IndexConfigure.aspx.cs">
+      <DependentUpon>IndexConfigure.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI_StaffAssessment\IndexConfigure.aspx.designer.cs">
+      <DependentUpon>IndexConfigure.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI_StaffAssessment\StaffAssessment.aspx.cs">
       <DependentUpon>StaffAssessment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1661,6 +1680,13 @@
     </Compile>
     <Compile Include="UI_StaffAssessment\StaffAssessmentRanking.aspx.designer.cs">
       <DependentUpon>StaffAssessmentRanking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI_StaffAssessment\StaffAssessmentResult.aspx.cs">
+      <DependentUpon>StaffAssessmentResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI_StaffAssessment\StaffAssessmentResult.aspx.designer.cs">
+      <DependentUpon>StaffAssessmentResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI_StaffAssessment\StaffAssessmentResultDetial.aspx.cs">
       <DependentUpon>StaffAssessmentResultDetial.aspx</DependentUpon>

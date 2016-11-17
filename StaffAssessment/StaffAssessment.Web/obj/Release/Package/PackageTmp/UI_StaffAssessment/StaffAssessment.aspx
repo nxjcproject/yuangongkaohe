@@ -45,7 +45,7 @@
                                       <tr>--%>
                                          <td style="width:40px">岗位:</td>
                                         <td >                               
-                                           <input class="easyui-combobox" type="text" id="workingSection" style="width:80px" />                 
+                                           <input class="easyui-combobox" type="text" id="workingSection" style="width:120px" />                 
                                         </td>  
                                       <%--     <td>产线:</td>
                                         <td >                               

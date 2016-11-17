@@ -17,6 +17,7 @@ namespace StaffAssessment.Service.StaffSignIn
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
             string mySql = @"SELECT [StaffInfoID]+' '+[Name] as text
                               ,[StaffInfoID] as id
+                              ,[StaffInfoItemId]
 	                          ,[Name]
                               ,[OrganizationID]
                               ,[WorkingTeamName]
@@ -53,7 +54,7 @@ namespace StaffAssessment.Service.StaffSignIn
                           ,A.[Remark] 
                   FROM [dbo].[shift_staffSignInRecord] A,[dbo].[system_WorkingSection] B,
                    [dbo].[system_StaffInfo] C,[dbo].[system_WorkingSectionShiftDescription] D
-                    where A.[WorkingSectionID]=B.[WorkingSectionID]
+                    where A.[WorkingSectionID]=B.[WorkingSectionItemID]
                     and A.[StaffID]=C.[StaffInfoItemId]
                     and A.[Shifts]=D.[ShiftDescriptionID]
                     and A.OrganizationID like @mOrganizationId+'%'
@@ -82,15 +83,15 @@ namespace StaffAssessment.Service.StaffSignIn
                           ,A.[Creator]
                           ,A.[CreateTime]
                           ,A.[Remark] 
-                    FROM [dbo].[shift_staffSignInRecord] A,[dbo].[system_WorkingSection] B,
-                       [dbo].[system_StaffInfo] C,[dbo].[system_WorkingSectionShiftDescription] D
-                    where A.[WorkingSectionID]=B.[WorkingSectionID]
-                     and A.[StaffID]=C.[StaffInfoItemId]
-                     and A.[Shifts]=D.[ShiftDescriptionID]
-                     and  A.OrganizationID=@mOrganizationId    
+                  FROM [dbo].[shift_staffSignInRecord] A,[dbo].[system_WorkingSection] B,
+                   [dbo].[system_StaffInfo] C,[dbo].[system_WorkingSectionShiftDescription] D
+                    where A.[WorkingSectionID]=B.[WorkingSectionItemID]
+                    and A.[StaffID]=C.[StaffInfoItemId]
+                    and A.[Shifts]=D.[ShiftDescriptionID]
+                    and A.OrganizationID like @mOrganizationId+'%'
                     and convert(datetime,[vDate])>=convert(datetime,@mStartTime)
-                    and convert(datetime,[vDate])<=convert(datetime,@mEndTime)                                     
-                     order by convert(datetime,[vDate])";
+                    and convert(datetime,[vDate])<=convert(datetime,@mEndTime)                 
+                    order by convert(datetime,[vDate])";
                 SqlParameter[] parameter = { 
                                                new SqlParameter("@mOrganizationId", mOrganizationId),   
                                                new SqlParameter("@mStartTime", mStartTime),

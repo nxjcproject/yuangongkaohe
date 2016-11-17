@@ -35,6 +35,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="AutoSetParameters, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AutoSetParameters.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyUIJsonParser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\EasyUIJsonParser.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="RunIndicators, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\RunIndicators.dll</HintPath>
@@ -44,10 +56,15 @@
     </Reference>
     <Reference Include="StaffAssessment, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\StaffAssessment.dll</HintPath>
+      <HintPath>..\..\..\..\QQ接收文件\StaffAssessment(3)\StaffAssessment\StaffAssessment\bin\Debug\StaffAssessment.dll</HintPath>
+    </Reference>
+    <Reference Include="Standard_GB16780-2012, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Standard_GB16780-2012.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,8 +76,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaffAssessment\AssessmentGroupService.cs" />
     <Compile Include="StaffAssessment\AssessmentVersionDefineService.cs" />
+    <Compile Include="StaffAssessment\IndexConfigureService.cs" />
     <Compile Include="StaffAssessment\StaffAssessmentRankingService.cs" />
     <Compile Include="StaffAssessment\StaffAssessmentResultDetialService.cs" />
+    <Compile Include="StaffAssessment\StaffAssessmentResultService.cs" />
     <Compile Include="StaffAssessment\StaffAssessmentService.cs" />
     <Compile Include="StaffSignIn\StaffSignInModifyService.cs" />
     <Compile Include="StaffSignIn\StaffSignInService.cs" />

@@ -11,24 +11,54 @@ namespace StaffAssessment.Service.StaffSignIn
 {
    public class StaffSignInService
     {
-       public static DataTable GetWorkingSectionTable(string mOrganizationID, string mWorkingSectionID)
+       public static DataTable GetWorkingSectionList(string mOrganizationID)
+       {
+           string connectionString = ConnectionStringFactory.NXJCConnectionString;
+           ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
+           string mySql = @"SELECT [WorkingSectionItemID]
+                                  ,[WorkingSectionID]
+                                  ,[WorkingSectionName]
+                                  ,[AssessmentCoefficient]
+                                  ,[Type]
+                                  ,[OrganizationID]
+                                  ,[DisplayIndex]
+                                  ,[ElectricityQuantityId]
+                                  ,[OutputId]
+                                  ,[CoalWeightId]
+                                  ,[Creator]
+                                  ,[CreatedTime]
+                                  ,[Enabled]
+                                  ,[Remarks]
+                              FROM [NXJC].[dbo].[system_WorkingSection]
+                              where [OrganizationID] like @mOrganizationID+ '%'";
+           SqlParameter[] para = {
+                                    new SqlParameter("@mOrganizationID", mOrganizationID)
+                                 };
+           DataTable dt = factory.Query(mySql, para);
+           return dt;
+       }
+       public static DataTable GetWorkingSectionTable(string mOrganizationID, string mWorkingSectionID, string mWorkingSectionItemID)
        {
            string connectionString = ConnectionStringFactory.NXJCConnectionString;
            ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
            string mySql = @"SELECT A.[ShiftDescriptionID]
-                                  ,B.[WorkingSectionType] as [WorkingSectionName]
-                                  ,A.[WorkingSectionID]
-                                  ,A.[Shifts]
-                                  ,A.[StartTime]
-                                  ,A.[EndTime]
-                                  ,A.[Remark]
-                              FROM [dbo].[system_WorkingSectionShiftDescription] A,[dbo].[system_WorkingSectionType] B
+                                    , C.[WorkingSectionName]
+	                                ,C.[WorkingSectionItemID]
+                                    ,A.[WorkingSectionID]
+                                    ,A.[Shifts]
+                                    ,A.[StartTime]
+                                    ,A.[EndTime]
+                                    ,A.[Remark]
+                                FROM [dbo].[system_WorkingSectionShiftDescription] A,[dbo].[system_WorkingSectionType] B,
+	                                [dbo].[system_WorkingSection] C
                               where A.[WorkingSectionID]=B.[WorkingSectionID]
                               and B.[OrganizationID] =@mOrganizationID
-                              and A.[WorkingSectionID]=@mWorkingSectionID";
+                              and A.[WorkingSectionID]=@mWorkingSectionID
+                              and C.[WorkingSectionItemID]=@mWorkingSectionItemID";
            SqlParameter[] para = {
                                     new SqlParameter("@mOrganizationID", mOrganizationID),
-                                    new SqlParameter("@mWorkingSectionID", mWorkingSectionID)
+                                    new SqlParameter("@mWorkingSectionID", mWorkingSectionID),
+                                    new SqlParameter("mWorkingSectionItemID", mWorkingSectionItemID)
                                  };
            DataTable dt = factory.Query(mySql, para);
            return dt;
@@ -112,16 +142,16 @@ namespace StaffAssessment.Service.StaffSignIn
                           ,C.[Name] as StaffName
                           ,A.[OrganizationID]
                           ,A.[WorkingSectionID]
-	                      ,B.[WorkingSectionType] as [WorkingSectionName]
+	                      ,B.[WorkingSectionName]
                           ,D.[Shifts]
                           ,D.[StartTime]
                           ,D.[EndTime]
                           ,A.[Creator]
                           ,A.[CreateTime]
                           ,A.[Remark] 
-                  FROM [dbo].[shift_staffSignInRecord] A,[dbo].[system_WorkingSectionType] B,
+                  FROM [dbo].[shift_staffSignInRecord] A,[dbo].[system_WorkingSection] B,
                    [dbo].[system_StaffInfo] C,[dbo].[system_WorkingSectionShiftDescription] D
-                    where A.[WorkingSectionID]=B.[WorkingSectionID]
+                    where A.[WorkingSectionID]=B.[WorkingSectionItemID]
                     and A.[StaffID]=C.[StaffInfoItemId]
                     and D.[ShiftDescriptionID]=A.[Shifts]
                     and A.OrganizationID=@mOrganizationID
@@ -138,7 +168,7 @@ namespace StaffAssessment.Service.StaffSignIn
              DataTable dt = factory.Query(mySql, parameter);
            return dt;
        }
-       public static int InsertSignIn(string mOrganizationID, string mVdate, string mStaffId, string mWorkingSectionID, string mShifts, string mUserName)
+       public static int InsertSignIn(string mOrganizationID, string mVdate, string mStaffId, string mWorkingSectionItemID, string mShifts, string mUserName)
        {
            string connectionString = ConnectionStringFactory.NXJCConnectionString;
            ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
@@ -148,12 +178,12 @@ namespace StaffAssessment.Service.StaffSignIn
                                 where [vDate]=@mVdate
                                 and [StaffID]=@mStaffId
                                 and [OrganizationID]=@mOrganizationID
-                                and [WorkingSectionID]=@mWorkingSectionID";
+                                and [WorkingSectionID]=@mWorkingSectionItemID";
            SqlParameter[] para = {
                                  new SqlParameter("@mVdate",mVdate),
                                  new SqlParameter("@mStaffId",mStaffId),
                                  new SqlParameter("@mOrganizationID",mOrganizationID),
-                                 new SqlParameter("@mWorkingSectionID",mWorkingSectionID)
+                                 new SqlParameter("@mWorkingSectionItemID",mWorkingSectionItemID)
                                  };
            DataTable selectTable = factory.Query(selectSQL, para);
 
@@ -177,7 +207,7 @@ namespace StaffAssessment.Service.StaffSignIn
                                        ,@mvDate
                                        ,@mStaffID
                                        ,@mOrganizationID
-                                       ,@mWorkingSectionID
+                                       ,@mWorkingSectionItemID
                                        ,@mShifts
                                        ,@mCreator
                                        ,@mCreateTime
@@ -187,7 +217,7 @@ namespace StaffAssessment.Service.StaffSignIn
                                     new SqlParameter("@mvDate",mVdate),
                                     new SqlParameter("@mStaffID",mStaffId),
                                     new SqlParameter("@mOrganizationID",mOrganizationID),
-                                    new SqlParameter("@mWorkingSectionID",mWorkingSectionID),
+                                    new SqlParameter("@mWorkingSectionItemID",mWorkingSectionItemID),
                                     new SqlParameter("@mShifts",mShifts),
                                     new SqlParameter("@mCreator",mUserName),
                                     new SqlParameter("@mCreateTime",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))

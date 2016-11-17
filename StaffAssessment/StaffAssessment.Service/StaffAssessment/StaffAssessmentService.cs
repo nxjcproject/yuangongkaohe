@@ -11,6 +11,32 @@ namespace StaffAssessment.Service.StaffAssessment
 {
     public class StaffAssessmentService
     {
+        public static DataTable GetWorkingSectionList(string mOrganizationID)
+        {
+            string connectionString = ConnectionStringFactory.NXJCConnectionString;
+            ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
+            string mySql = @"SELECT [WorkingSectionItemID]
+                                  ,[WorkingSectionID]
+                                  ,[WorkingSectionName]
+                                  ,[AssessmentCoefficient]
+                                  ,[Type]
+                                  ,[OrganizationID]
+                                  ,[DisplayIndex]
+                                  ,[ElectricityQuantityId]
+                                  ,[OutputId]
+                                  ,[CoalWeightId]
+                                  ,[Creator]
+                                  ,[CreatedTime]
+                                  ,[Enabled]
+                                  ,[Remarks]
+                              FROM [NXJC].[dbo].[system_WorkingSection]
+                              where [OrganizationID] like @mOrganizationID+ '%'";
+            SqlParameter[] para = {
+                                    new SqlParameter("@mOrganizationID", mOrganizationID)
+                                 };
+            DataTable dt = factory.Query(mySql, para);
+            return dt;
+        }
         public static DataTable GetWorkingSectionByStaffSignIn(string mOrganizationID, string mStartTime, string mEndTime)
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
@@ -35,7 +61,7 @@ namespace StaffAssessment.Service.StaffAssessment
             return dt;
         }
 
-        public static DataTable GetAssessmentVersionTable(string mOrganizationID, string mWorkingSectionID) 
+        public static DataTable GetAssessmentVersionTable(string mOrganizationID, string mWorkingSectionItemID) 
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
@@ -46,9 +72,9 @@ namespace StaffAssessment.Service.StaffAssessment
                                     ,[WorkingSectionID]
                                 FROM [dbo].[tz_Assessment]
                                 where [OrganizationID]=@mOrganizationID
-                                and [WorkingSectionID]=@mWorkingSectionID";
+                                and [WorkingSectionID]=@mWorkingSectionItemID";
             SqlParameter[] para = { new SqlParameter("@mOrganizationID", mOrganizationID) ,
-                                  new SqlParameter("@mWorkingSectionID", mWorkingSectionID) 
+                                  new SqlParameter("@mWorkingSectionItemID", mWorkingSectionItemID) 
                                   };
             DataTable dt = factory.Query(mySql, para);
             return dt;          
@@ -113,6 +139,7 @@ namespace StaffAssessment.Service.StaffAssessment
                                   ,C.[ObjectName]
                                   ,A.[ObjectId]
                                   ,A.[OrganizationID]
+                                  ,E.Name as OrganizationName
                                   ,A.[KeyId]
                                   ,A.[WeightedValue]
                                   ,A.[BestValue]
@@ -120,8 +147,9 @@ namespace StaffAssessment.Service.StaffAssessment
                                   ,A.[AssessmenScore]
                                   ,A.[WeightedAverageCredit]
                             FROM  [dbo].[assessment_ShiftAssessmentResultDetail] A,[dbo].[tz_ShiftAssessmentResult] B
-                              ,[dbo].[assessment_AssessmentDetail] C,[dbo].[system_StaffInfo] D
+                              ,[dbo].[assessment_AssessmentDetail] C,[dbo].[system_StaffInfo] D,[dbo].[system_Organization] E
                             where B.[OrganizationID]=@mOrganizationID
+                            and A.[OrganizationID]=E.[OrganizationID]
                             and B.[WorkingSectionID]=@mWorkingSectionID
                             and B.[GroupId]=@mGroupId
                              {0}                        
@@ -157,7 +185,7 @@ namespace StaffAssessment.Service.StaffAssessment
             }
             return dt;     
         }
-        public static DataTable GetStaffAssessmentTZ(string mProductionID, string mWorkingSectionID, string mStaffId, string mStaffName, string mGroupId, string mGroupName, string mStartTime,string mEndTime, string mVersionId, string mStatisticalCycle, string mCreator) 
+        public static DataTable GetStaffAssessmentTZ(string mProductionID, string mWorkingSectionID,string mCoefficient, string mStaffId, string mStaffName, string mGroupId, string mGroupName, string mStartTime,string mEndTime, string mVersionId, string mStatisticalCycle, string mCreator) 
         {
             //需加入验证是否存在该考核
 
@@ -192,11 +220,11 @@ namespace StaffAssessment.Service.StaffAssessment
                 foreach (DataRow dr in staffList.Rows)
                 {
                     if (!dr["Name"].ToString().Trim().Equals(""))
-                        tztable.Rows.Add(System.Guid.NewGuid().ToString(), mGroupName, dr["id"].ToString().Trim(), mProductionID, mWorkingSectionID, starTime, endTime, DateTime.Now.ToString(), mGroupId,null, mCreator,null, dr["Name"].ToString().Trim());
+                        tztable.Rows.Add(System.Guid.NewGuid().ToString(), mGroupName, dr["id"].ToString().Trim(), mProductionID, mWorkingSectionID,mCoefficient, starTime, endTime, DateTime.Now.ToString(), mGroupId,null, mCreator,null, dr["Name"].ToString().Trim());
                 }
             }
             else {
-                tztable.Rows.Add(System.Guid.NewGuid().ToString(), mGroupName, mStaffId, mProductionID, mWorkingSectionID, starTime, endTime, DateTime.Now.ToString(), mGroupId,null, mCreator,null, mStaffName);                  
+                tztable.Rows.Add(System.Guid.NewGuid().ToString(), mGroupName, mStaffId, mProductionID, mWorkingSectionID, mCoefficient,starTime, endTime, DateTime.Now.ToString(), mGroupId, null, mCreator, null, mStaffName);                  
             }
             return tztable;                
         }
@@ -239,20 +267,32 @@ namespace StaffAssessment.Service.StaffAssessment
                 }
                 m_AssessmentTable.Merge(mAssessmentTable);
             }
-            m_AssessmentTable.Columns.Add("AssessmentName", typeof(string));
-            DataTable AssessmentCatalogueTable = Table_AssessmentCatalogue.GetAssessmentCatalogue();
+//            m_AssessmentTable.Columns.Add("ObjectName", typeof(string));
+//            m_AssessmentTable.Columns.Add("AssessmentName", typeof(string));
+//            string objectId = "";
+//            for (int i = 0; i < m_AssessmentTable.Rows.Count; i++)
+//            {
+//                objectId = m_AssessmentTable.Rows[i]["ObjectId"].ToString();
+//                string mSql = @"select ObjectName from [dbo].[assessment_AssessmentDetail]
+//                            where [ObjectId]=@objectId";
+//                SqlParameter para = new SqlParameter("@objectId", objectId);
+//                DataTable dt = factory.Query(mSql,para);
+//                string objectName = dt.Rows[0]["ObjectName"].ToString();
+//                m_AssessmentTable.Rows[i]["ObjectName"] = objectName;
+//            }
+//            DataTable AssessmentCatalogueTable = Table_AssessmentCatalogue.GetAssessmentCatalogue();
 
-            for (int i = 0; i < m_AssessmentTable.Rows.Count;i++ )
-            {
-                for (int j = 0; j < AssessmentCatalogueTable.Rows.Count;j++ )
-                {
+//            for (int i = 0; i < m_AssessmentTable.Rows.Count;i++ )
+//            {
+//                for (int j = 0; j < AssessmentCatalogueTable.Rows.Count;j++ )
+//                {
 
-                    if (m_AssessmentTable.Rows[i]["AssessmentId"].ToString().Trim().Equals(AssessmentCatalogueTable.Rows[j]["AssessmentId"].ToString().Trim()))
-                    {
-                        m_AssessmentTable.Rows[i]["AssessmentName"] = AssessmentCatalogueTable.Rows[j]["Name"];              
-                    }
-                }
-            }
+//                    if (m_AssessmentTable.Rows[i]["AssessmentId"].ToString().Trim().Equals(AssessmentCatalogueTable.Rows[j]["AssessmentId"].ToString().Trim()))
+//                    {
+//                        m_AssessmentTable.Rows[i]["AssessmentName"] = AssessmentCatalogueTable.Rows[j]["Name"];              
+//                    }
+//                }
+//            }
             return m_AssessmentTable; 
         }
         private static DataTable GetAssessmentCatalogue()
@@ -281,6 +321,7 @@ namespace StaffAssessment.Service.StaffAssessment
             table.Columns.Add("StaffID", typeof(string));
             table.Columns.Add("OrganizationID", typeof(string));
             table.Columns.Add("WorkingSectionID", typeof(string));
+            table.Columns.Add("AssessmentCoefficient", typeof(string));
             table.Columns.Add("StartTime", typeof(string));
             table.Columns.Add("EndTime", typeof(string));
             table.Columns.Add("TimeStamp", typeof(string));
@@ -320,8 +361,8 @@ namespace StaffAssessment.Service.StaffAssessment
 	                              ,convert(datetime,A.vDate+' '+B.[EndTime]) as EndTime
                               FROM [dbo].[shift_staffSignInRecord] A,
                                    [dbo].[system_WorkingSectionShiftDescription] B
-                              where A.[WorkingSectionID]=B.[WorkingSectionID]
-                              and A.[Shifts]=B.[Shifts]
+                              where 
+                               A.[Shifts]=B.[ShiftDescriptionID]
                               and A.[OrganizationID]=@mProductionID
                               and A.[WorkingSectionID]=@mWorkingSectionID
                               and A.[StaffID]=@mStaffId
@@ -335,7 +376,29 @@ namespace StaffAssessment.Service.StaffAssessment
                                       new SqlParameter("@endTime", endTime) 
                                   };
             DataTable mSignInTime = factory.Query(mySql, para);
-            return mSignInTime;            
+            //return mSignInTime;
+            DataTable lastSignInTime = new DataTable();
+            lastSignInTime.Columns.Add("StartTime", typeof(DateTime));
+            lastSignInTime.Columns.Add("EndTime", typeof(DateTime));
+            if (mSignInTime.Rows.Count != 0)
+            {
+                string mstartTime = mSignInTime.Rows[0]["StartTime"].ToString();
+                string mendTime = mSignInTime.Rows[0]["EndTime"].ToString();
+                DateTime msinStartTime = Convert.ToDateTime(mstartTime);
+                DateTime msinEndTime = Convert.ToDateTime(mendTime);
+                //DateTime msinAddEndTime = new DateTime();
+                if (DateTime.Compare(msinStartTime, msinEndTime) >= 0)
+                {
+                    msinEndTime = msinEndTime.AddDays(1);
+                }               
+                //lastSignInTime.Rows[0]["StartTime"] = msinStartTime;
+                //lastSignInTime.Rows[0]["EndTime"] = msinStartTime;
+                DataRow dr = lastSignInTime.NewRow();
+                dr["StartTime"] = msinStartTime;
+                dr["EndTime"] = msinEndTime;
+                lastSignInTime.Rows.Add(dr);               
+            }
+            return lastSignInTime;
         }
         /// <summary>
         /// 获取岗位考核项
@@ -346,10 +409,13 @@ namespace StaffAssessment.Service.StaffAssessment
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
-            string mySql = @"SELECT [Id]
+            string mySql = @"SELECT A.[Id]
                                   ,[AssessmentId]
-                                  ,[ObjectId]
-                                  ,[OrganizationID]
+                                    ,[AssessmentName]
+                                    ,[ObjectId]
+                                    ,[ObjectName]
+                                  ,A.[OrganizationID]
+                                  ,B.Name as OrganizationName
                                   ,[KeyId]
                                   ,[WeightedValue]
                                   ,[BestValue]
@@ -359,21 +425,12 @@ namespace StaffAssessment.Service.StaffAssessment
                                   ,[ScoreFactor]
                                   ,[MaxScore]
                                   ,[MinScore]
-                                  ,[Enabled]
-                          FROM [dbo].[assessment_AssessmentDetail]
-                              where Enabled=1
-                              and KeyId=@mKeyId
-                            group by [AssessmentId],[ObjectId]
-                              ,[OrganizationID]
-                              ,[KeyId],[Id] ,[WeightedValue]
-                              ,[BestValue]
-                              ,[WorstValue]
-                              ,[StandardValue]
-                              ,[StandardScore]
-                              ,[ScoreFactor]
-                              ,[MaxScore]
-                              ,[MinScore]
-                              ,[Enabled]";
+                                  ,A.[Enabled]
+                                 
+                          FROM [dbo].[assessment_AssessmentDetail] A ,[dbo].[system_Organization] B
+                              where A.Enabled=1
+                              and A.OrganizationID=B.OrganizationID
+                              and KeyId=@mKeyId";
             SqlParameter para = new SqlParameter("@mKeyId", mKeyId);
             DataTable mAssessmentItems = factory.Query(mySql, para);
             return mAssessmentItems;   
@@ -388,9 +445,8 @@ namespace StaffAssessment.Service.StaffAssessment
                  //验证是否已经插入？？只验证tz表的插入即可！
                 //已经插入 result=-1;
             /////
-            int result = factory.Save("tz_ShiftAssessmentResult", tzTable) + factory.Save("assessment_ShiftAssessmentResultDetail", detailTable);         
+            int result = factory.Save("tz_ShiftAssessmentResult", tzTable) + factory.Save("assessment_ShiftAssessmentResultDetail", detailTable);
             result = result > 0 ? 1 : 0;
-
             return result;
         }
         public static DataTable tzTableStructure()
@@ -401,6 +457,7 @@ namespace StaffAssessment.Service.StaffAssessment
             table.Columns.Add("StaffID", typeof(string));
             table.Columns.Add("OrganizationID", typeof(string));
             table.Columns.Add("WorkingSectionID", typeof(string));
+            table.Columns.Add("AssessmentCoefficient", typeof(string));
             table.Columns.Add("StartTime", typeof(string));
             table.Columns.Add("EndTime", typeof(string));
             table.Columns.Add("TimeStamp", typeof(string));
@@ -415,7 +472,9 @@ namespace StaffAssessment.Service.StaffAssessment
             DataTable table = new DataTable();
             table.Columns.Add("Id", typeof(string));
             table.Columns.Add("AssessmentId", typeof(string));
+            table.Columns.Add("AssessmentName", typeof(string));
             table.Columns.Add("ObjectId", typeof(string));
+            table.Columns.Add("ObjectName", typeof(string));
             table.Columns.Add("OrganizationID", typeof(string));
             table.Columns.Add("KeyId", typeof(string));
             table.Columns.Add("WeightedValue", typeof(string));

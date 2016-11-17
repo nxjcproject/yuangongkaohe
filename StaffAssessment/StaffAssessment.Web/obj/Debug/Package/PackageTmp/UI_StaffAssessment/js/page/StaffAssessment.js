@@ -22,25 +22,28 @@ function onOrganisationTreeClick(node) {
     mOrganizationId = node.OrganizationId;
     LoadWorkingSectionList(mOrganizationId);
 }
+var mCoefficient = "";
+var mWorkingSectionItemID = "";
 function LoadWorkingSectionList(mValue) {
     $.ajax({
         type: "POST",
-        url: "AssessmentVersionDefine.aspx/GetWorkingSection",
-        data: " {mOrganizationId:'" + mValue + "'}",
+        url: "StaffAssessment.aspx/GetWorkingSection",
+        data: " {mOrganizationID:'" + mValue + "'}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
             var myData = jQuery.parseJSON(msg.d);
             $('#workingSection').combobox({
-                valueField: 'WorkingSectionID',
+                valueField: 'WorkingSectionItemID',
                 textField: 'WorkingSectionName',
                 panelHeight: 'auto',
                 data: myData.rows,
                 onSelect: function (record) {
-                    mWorkingSectionID = record.WorkingSectionID;
+                    mWorkingSectionItemID = record.WorkingSectionItemID;
                     mProductionID = record.OrganizationID;
-                    LoadStaffInfo(mProductionID, mWorkingSectionID);     //员工信息
-                    LoadAssessmentVersion(mProductionID, mWorkingSectionID);
+                    mCoefficient = record.AssessmentCoefficient;
+                    LoadStaffInfo(mWorkingSectionItemID);     //员工信息
+                    LoadAssessmentVersion(mWorkingSectionItemID);
                 }
             });
         },       
@@ -50,11 +53,11 @@ function LoadWorkingSectionList(mValue) {
     });
 }
 //根据岗位加载员工列表
-function LoadStaffInfo(productionId, workingSectionId) {
+function LoadStaffInfo(mWorkingSectionItemId) {
     $.ajax({
         type: "POST",
         url: "StaffAssessment.aspx/GetStaffInfo",
-        data: " {mProductionId:'" + productionId + "',mWorkingSectionID:'" + workingSectionId + "'}",
+        data: " {mProductionId:'" + mOrganizationId + "',mWorkingSectionItemID:'" + mWorkingSectionItemId + "'}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
@@ -130,11 +133,11 @@ function LoadAssessmentGroupGrid() {
     });
 }
 //加载版本
-function LoadAssessmentVersion(productionId, workingSectionId){
+function LoadAssessmentVersion(workingSectionItemId){
     $.ajax({
         type: "POST",
         url: "StaffAssessment.aspx/GetAssessmentVersion",
-        data: " {mOrganizationID:'" + productionId + "',mWorkingSectionID:'" + workingSectionId + "'}",
+        data: " {mOrganizationID:'" + mOrganizationId + "',mWorkingSectionItemID:'" + workingSectionItemId + "'}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
@@ -177,7 +180,7 @@ function Calculate() {
             $.ajax({
                 type: "POST",
                 url: "StaffAssessment.aspx/CalculateStaffAssessment",  //(mProductionID, mWorkingSectionID, mStaffId,mStaffName, mGroupId,mGroupName, mStartTime, mVersionId, mStatisticalCycle)
-                data: "{mProductionID:'" + mProductionID + "',mWorkingSectionID:'" + mWorkingSectionID + "',mStaffId:'" + mStaffId + "',mStaffName:'" + mStaffName + "',mGroupId:'" + mGroupId + "',mGroupName:'" + mGroupName + "',mStartTime:'" + mStartTime + "',mEndTime:'" +mEndTime+ "',mVersionId:'" + mVersionId + "',mStatisticalCycle:'" + mStatisticalCycle + "'}",
+                data: "{mProductionID:'" + mOrganizationId + "',mWorkingSectionID:'" + mWorkingSectionItemID + "',mCoefficient:'" + mCoefficient + "',mStaffId:'" + mStaffId + "',mStaffName:'" + mStaffName + "',mGroupId:'" + mGroupId + "',mGroupName:'" + mGroupName + "',mStartTime:'" + mStartTime + "',mEndTime:'" + mEndTime + "',mVersionId:'" + mVersionId + "',mStatisticalCycle:'" + mStatisticalCycle + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (msg) {
@@ -219,7 +222,7 @@ function Query() {
         mEndTime = $('#date_year').datebox('getValue')+'-12-31 23:59:59';
     }
     mUrl = "StaffAssessment.aspx/GetAssessmentResult";
-    mData = " {mProductionID:'" + mProductionID + "',mWorkingSectionID:'" + mWorkingSectionID + "',mStaffId:'" + mStaffId + "',mGroupId:'" + mGroupId + "',mGroupName:'" + mGroupName + "',mStartTime:'" + mStartTime + "',mEndTime:'" + mEndTime + "',mVersionId:'" + mVersionId + "',mStatisticalCycle:'" + mStatisticalCycle + "'}";
+    mData = " {mProductionID:'" + mOrganizationId + "',mWorkingSectionID:'" + mWorkingSectionItemID + "',mStaffId:'" + mStaffId + "',mGroupId:'" + mGroupId + "',mGroupName:'" + mGroupName + "',mStartTime:'" + mStartTime + "',mEndTime:'" + mEndTime + "',mVersionId:'" + mVersionId + "',mStatisticalCycle:'" + mStatisticalCycle + "'}";
     $.ajax({
         type: "POST",
         url: mUrl,
@@ -291,13 +294,14 @@ function AssessmentResultdetail(myKeyId,myStaffName) {
     var m_AssessmentName = "";
     var m_ObjectId = "";
     var m_ObjectName = "";
-    var m_OrganizaitonID = "";
+    var m_OrganizationID = "";
     var m_KeyId = "";
     var m_WeightedValue = "";
     var m_BestValue = "";
     var m_WorstValue = "";
     var m_AssessmenScore = "";
     var m_WeightedAverageCredit = "";
+    var m_OrganizationName = "";
     var myDetail=[];
     for (var i = 0; i < resultData.rows.length; i++) {
         var test = resultData.rows[i]["KeyId"].toLowerCase();
@@ -307,14 +311,15 @@ function AssessmentResultdetail(myKeyId,myStaffName) {
             m_AssessmentName = resultData.rows[i]["AssessmentName"];
             m_ObjectId = resultData.rows[i]["ObjectId"];
             m_ObjectName = resultData.rows[i]["ObjectName"];
-            m_OrganizaitonID = resultData.rows[i]["OrganizaitonID"];
+            m_OrganizationID = resultData.rows[i]["OrganizationID"];
             m_KeyId = resultData.rows[i]["KeyId"];
             m_WeightedValue = resultData.rows[i]["WeightedValue"];
             m_BestValue = resultData.rows[i]["BestValue"];
             m_WorstValue = resultData.rows[i]["WorstValue"];
             m_AssessmenScore = resultData.rows[i]["AssessmenScore"];
-            m_WeightedAverageCredit = resultData.rows[i]["WeightedAverageCredit"];      
-            var myRow = { "StaffName": mStaffName, "Id": m_Id, "AssessmentId": m_AssessmentId, "AssessmentName": m_AssessmentName, "ObjectId": m_ObjectId, "ObjectName": m_ObjectName, "OrganizaitonID": m_OrganizaitonID, "KeyId": m_KeyId, "WeightedValue": m_WeightedValue, "BestValue": m_BestValue, "WorstValue": m_WorstValue, "AssessmenScore": m_AssessmenScore, "WeightedAverageCredit": m_WeightedAverageCredit };
+            m_WeightedAverageCredit = resultData.rows[i]["WeightedAverageCredit"];
+            m_OrganizationName = resultData.rows[i]["OrganizationName"]
+            var myRow = { "StaffName": mStaffName, "Id": m_Id, "AssessmentId": m_AssessmentId, "AssessmentName": m_AssessmentName, "ObjectId": m_ObjectId, "ObjectName": m_ObjectName, "OrganizationID": m_OrganizationID, "KeyId": m_KeyId, "WeightedValue": m_WeightedValue, "BestValue": m_BestValue, "WorstValue": m_WorstValue, "AssessmenScore": m_AssessmenScore, "WeightedAverageCredit": m_WeightedAverageCredit, "OrganizationName": m_OrganizationName };
             myDetail.push(myRow);
         }
     }
@@ -356,12 +361,16 @@ function LoadMainDataGrid(type, myData) {
 function LoadresultDetailDataGrid(type, myData) {
     if (type == "first") {
         $('#grid_resultDetail').datagrid({
+            frozenColumns: [[
+                { field: 'StaffName', title: '员工', width: 60 }
+            ]],
             columns: [[
-                    { field: 'StaffName', title: '员工', width: 60 },
-                    { field: 'AssessmentName', title: '考核项', width: 100 },
+                    { field: 'OrganizationName', title: '产线', width: 100 },
+                    { field: 'ObjectName', title: '考核元素', width: 130 },
+                    { field: 'AssessmentName', title: '考核项', width: 100 },                   
                     { field: 'WeightedValue', title: '权重', width: 80 },
-                    { field: 'BestValue', title: '最好值', width: 80 },
-                    { field: 'WorstValue', title: '最差值', width: 80 },
+                    //{ field: 'BestValue', title: '最好值', width: 80 },
+                    //{ field: 'WorstValue', title: '最差值', width: 80 },
                     { field: 'AssessmenScore', title: '考核分', width: 80 },
                     { field: 'WeightedAverageCredit', title: '加权分', width: 80 }
             ]],
@@ -446,7 +455,7 @@ function InitialDate(type) {
         $(".myear").hide();
         $(".mmonth").hide();
         $(".mday").show();
-        beforeDate.setDate(nowDate.getDate() - 10);
+        beforeDate.setDate(nowDate.getDate());
         var startDate = beforeDate.getFullYear() + '-' + (beforeDate.getMonth() + 1) + '-' + (beforeDate.getDate());
         var endDate = nowDate.getFullYear() + '-' + (nowDate.getMonth() + 1) + '-' + nowDate.getDate();
         sday = $('#date_sday').datebox('setValue', startDate);

@@ -70,13 +70,17 @@
 	    			    </td>
 	    		    </tr>
                     <tr>
-	    			<td>岗位：</td>
+	    			<td>岗位类别：</td>
 	    			<td>  <input id="sectionType" class="easyui-combobox" style="width:120px">
 	    			</td>
 	    		    </tr>
                     <tr>
-	    			    <td>岗位名称：</td> 
-	    			    <td><input class="easyui-textbox" type="text" id="workingSection" style="width:120px" /></td>
+	    			    <td>岗位：</td> 
+	    			    <td><input class="easyui-textbox" type="text" id="workingSection"  style="width:120px" /></td>
+	    		    </tr>
+                    <tr>
+	    			    <td>考核系数：</td> 
+	    			    <td><input class="easyui-numberbox" type="text" id="assessmentCoefficient" precision:2 style="width:120px" /></td>
 	    		    </tr>
 	    		    <tr>
 	    			<td>启用标志：</td>
@@ -86,10 +90,10 @@
                             <option value="False">否</option>              
                         </select></td>
 	    		    </tr>
-                     <tr>
+                     <%--<tr>
 	    			    <td>编辑人：</td> 
 	    			    <td><input class="easyui-textbox" type="text" id="editor" style="width:120px" /></td>
-	    		    </tr>       
+	    		    </tr> --%>      
                      <tr>
 	    			    <td>备注：</td> 
 	    			    <td>

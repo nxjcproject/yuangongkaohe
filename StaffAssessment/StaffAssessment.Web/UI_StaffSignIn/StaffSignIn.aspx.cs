@@ -32,14 +32,14 @@ namespace StaffAssessment.Web.UI_StaffSignIn
         [WebMethod]
         public static string GetWorkingSection(string mOrganizationID)
         {
-            DataTable table = commonClass.GetWorkingSectionList(mOrganizationID);
+            DataTable table = StaffSignInService.GetWorkingSectionList(mOrganizationID);
             string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
             return json;
         }
         [WebMethod]
-        public static string GetStaffIn(string mOrganizationID, string mWorkingSectionID)
+        public static string GetStaffIn(string mOrganizationID, string mWorkingSectionID, string mWorkingSectionItemID)
         {
-            DataTable table = StaffSignInService.GetWorkingSectionTable(mOrganizationID, mWorkingSectionID);
+            DataTable table = StaffSignInService.GetWorkingSectionTable(mOrganizationID, mWorkingSectionID, mWorkingSectionItemID);
             string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
             return json;
         }
@@ -65,10 +65,10 @@ namespace StaffAssessment.Web.UI_StaffSignIn
             return result;
         }
         [WebMethod]
-        public static int InsertSignIn(string mOrganizationID, string mVdate, string mStaffId, string mWorkingSectionID, string mShifts) 
+        public static int InsertSignIn(string mOrganizationID, string mVdate, string mStaffId, string mWorkingSectionItemID, string mShifts) 
     //" {mOrganizationID:'" + mOrganizationID + "',mVdate:'" + mVdate + "',mStaffId:'" + itemId + "',mWorkingSectionID:'" + mWorkingSectionID + "',mShifts:'" + mShiftsID + "'}",
         {
-            int result = StaffSignInService.InsertSignIn(mOrganizationID, mVdate, mStaffId, mWorkingSectionID,mShifts,mUserName);
+            int result = StaffSignInService.InsertSignIn(mOrganizationID, mVdate, mStaffId, mWorkingSectionItemID, mShifts, mUserName);
             return result;
         
         }

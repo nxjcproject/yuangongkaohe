@@ -32,14 +32,14 @@ namespace StaffAssessment.Web.UI_StaffAssessment
         [WebMethod]
         public static string GetWorkingSection(string mOrganizationID)
         {
-            DataTable table = commonClass.GetWorkingSectionList(mOrganizationID);
+            DataTable table = StaffAssessmentService.GetWorkingSectionList(mOrganizationID);
             string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
             return json;
         }
         [WebMethod]
-        public static string GetStaffInfo(string mProductionId, string mWorkingSectionID)
+        public static string GetStaffInfo(string mProductionId, string mWorkingSectionItemID)
         {
-            DataTable table = commonClass.GetStaffInfoTable(mProductionId, mWorkingSectionID);
+            DataTable table = commonClass.GetStaffInfoTable(mProductionId, mWorkingSectionItemID);
             string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
             return json;
         }
@@ -51,9 +51,9 @@ namespace StaffAssessment.Web.UI_StaffAssessment
             return json;        
         }
         [WebMethod]
-        public static string GetAssessmentVersion(string mOrganizationID, string mWorkingSectionID)
+        public static string GetAssessmentVersion(string mOrganizationID, string mWorkingSectionItemID)
         {
-            DataTable table = StaffAssessmentService.GetAssessmentVersionTable(mOrganizationID, mWorkingSectionID);
+            DataTable table = StaffAssessmentService.GetAssessmentVersionTable(mOrganizationID, mWorkingSectionItemID);
             string json = EasyUIJsonParser.DataGridJsonParser.DataTableToJson(table);
             return json;
         }
@@ -71,10 +71,10 @@ namespace StaffAssessment.Web.UI_StaffAssessment
             return tzTablejson + "&" + detailTablejson;
         }
         [WebMethod]
-        public static string CalculateStaffAssessment(string mProductionID, string mWorkingSectionID, string mStaffId, string mStaffName, string mGroupName, string mGroupId, string mStartTime, string mEndTime, string mVersionId, string mStatisticalCycle)
+        public static string CalculateStaffAssessment(string mProductionID, string mWorkingSectionID, string mCoefficient, string mStaffId, string mStaffName, string mGroupName, string mGroupId, string mStartTime, string mEndTime, string mVersionId, string mStatisticalCycle)
         {
             //生成引领表
-            DataTable tzTable = StaffAssessmentService.GetStaffAssessmentTZ(mProductionID, mWorkingSectionID, mStaffId, mStaffName, mGroupId, mGroupName, mStartTime,mEndTime, mVersionId, mStatisticalCycle, mUserName);
+            DataTable tzTable = StaffAssessmentService.GetStaffAssessmentTZ(mProductionID, mWorkingSectionID, mCoefficient, mStaffId, mStaffName, mGroupId, mGroupName, mStartTime, mEndTime, mVersionId, mStatisticalCycle, mUserName);
             //GetStaffAssessmentCalculateResult
             //获取考核计算之后的表
             DataTable CalculateResult = StaffAssessmentService.GetStaffAssessmentCalculateResult(tzTable, mVersionId, mStatisticalCycle);

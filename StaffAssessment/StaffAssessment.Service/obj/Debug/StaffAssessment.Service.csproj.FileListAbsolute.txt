@@ -29,7 +29,6 @@ D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.
 D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.dll
 D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.pdb
 E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\RunIndicators.dll
-E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.dll
 E:\git仓库\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Service.dll
 E:\git仓库\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Service.pdb
 E:\git仓库\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\AutoMapper.dll
@@ -50,3 +49,5 @@ C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版�
 C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.dll
 C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.pdb
+E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.dll
+E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.pdb

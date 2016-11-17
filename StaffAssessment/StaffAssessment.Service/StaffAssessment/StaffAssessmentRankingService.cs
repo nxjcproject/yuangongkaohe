@@ -12,6 +12,27 @@ namespace StaffAssessment.Service.StaffAssessment
 {
     public class StaffAssessmentRankingService
     {
+        public static DataTable GetWorkingSectionList(string mOrganizationID)
+        {
+            string connectionString = ConnectionStringFactory.NXJCConnectionString;
+            ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
+            string mySql = @"SELECT A.[WorkingSectionID]
+                            ,A.[WorkingSectionType] as [WorkingSectionName]
+                            ,A.[OrganizationID]
+                            ,A.[DisplayIndex]
+                            ,A.[Enabled]
+                        FROM [dbo].[system_WorkingSectionType] A,[dbo].[system_WorkingSection] B
+                        where A.[OrganizationID] = @mOrganizationID
+                        and A.[WorkingSectionID]=B.[WorkingSectionID]
+                        and A.[Enabled]=1
+                        group by A.[WorkingSectionID],A.[WorkingSectionType],A.[OrganizationID],A.DisplayIndex,A.Enabled
+                        order by [WorkingSectionName]";
+            SqlParameter[] para = {
+                                    new SqlParameter("@mOrganizationID", mOrganizationID)
+                                 };
+            DataTable dt = factory.Query(mySql, para);
+            return dt;
+        }
         public static DataTable GetAssessmentResultTable(string mProductionID, string mWorkingSectionID, string mGroupId, string mStartTime, string mEndTime,  string mStatisticalCycle)
         {
             DataTable resultTable = generationTableTemplate(mStartTime, mEndTime, mStatisticalCycle);
@@ -50,7 +71,7 @@ namespace StaffAssessment.Service.StaffAssessment
                                   FROM [dbo].[tz_ShiftAssessmentResult] A,(select KeyId,sum([AssessmenScore]) as [AssessmenScore] from [dbo].[assessment_ShiftAssessmentResultDetail]
                                         where KeyId in( select KeyId from [dbo].[tz_ShiftAssessmentResult]
                                         where [OrganizationID]=@mProductionID
-                                        and [WorkingSectionID]=@mWorkingSectionID
+                                        and [WorkingSectionID]=(select WorkingSectionItemID from [dbo].[system_WorkingSection] where WorkingSectionID=@mWorkingSectionID)
                                         and [GroupId]=@mGroupId
                                         and [StartTime]>=convert(datetime,@mStartTime)
                                         and [StartTime]<=convert(datetime,@mEndTime)
@@ -73,17 +94,29 @@ namespace StaffAssessment.Service.StaffAssessment
                 resultTable.Rows.Add(table.Rows[0]["StaffName"].ToString().Trim());
                 resultTable.Rows[rowNum][table.Rows[0]["Time"].ToString().Trim()] = table.Rows[0]["AssessmenScore"];
                 decimal averageValue = Convert.ToDecimal(table.Rows[0]["AssessmenScore"]);
-                resultTable.Rows[rowNum]["总分"] = averageValue;
+                resultTable.Rows[rowNum]["总分"] = 0;
                 for (int i = 0; i < table.Rows.Count - 1; i++)
                 {
-                    if (table.Rows[i + 1]["StaffName"].ToString().Trim().Equals(table.Rows[i]["StaffName"].ToString().Trim()))
+                    if (table.Rows[i + 1]["StaffName"].ToString().Trim().Equals(table.Rows[i]["StaffName"].ToString().Trim())
+                        && table.Rows[i + 1]["Time"].ToString().Trim().Equals(table.Rows[i]["Time"].ToString().Trim()))
                     {
-                        resultTable.Rows[rowNum][table.Rows[i + 1]["Time"].ToString().Trim()] = table.Rows[i + 1]["AssessmenScore"];
-                        averageValue = averageValue + Convert.ToDecimal(table.Rows[i + 1]["AssessmenScore"]);
+                        resultTable.Rows[rowNum][table.Rows[i + 1]["Time"].ToString().Trim()] = Convert.ToDecimal(resultTable.Rows[rowNum][table.Rows[i + 1]["Time"].ToString().Trim()]) + Convert.ToDecimal(table.Rows[i + 1]["AssessmenScore"]);
+                        averageValue = Convert.ToDecimal(resultTable.Rows[rowNum][table.Rows[i]["Time"].ToString().Trim()]);
                         resultTable.Rows[rowNum]["总分"] = averageValue;
+                        resultTable.Rows[rowNum][table.Rows[i + 1]["Time"].ToString().Trim()] = averageValue;
 
                     }
-                    else
+                    if (table.Rows[i + 1]["StaffName"].ToString().Trim().Equals(table.Rows[i]["StaffName"].ToString().Trim())
+                        && table.Rows[i + 1]["Time"].ToString().Trim() != (table.Rows[i]["Time"].ToString().Trim()))
+                    {
+                        decimal taverageValue = Convert.ToDecimal(table.Rows[i + 1]["AssessmenScore"]);
+                        resultTable.Rows[rowNum][table.Rows[i + 1]["Time"].ToString().Trim()] = table.Rows[i + 1]["AssessmenScore"];
+                        averageValue = Convert.ToDecimal(table.Rows[i + 1]["AssessmenScore"]);
+                        resultTable.Rows[rowNum]["总分"] = averageValue + Convert.ToDecimal(resultTable.Rows[rowNum]["总分"]);
+                        resultTable.Rows[rowNum][table.Rows[i + 1]["Time"].ToString().Trim()] = averageValue;
+                    }
+                    else if(table.Rows[i + 1]["StaffName"].ToString().Trim() != (table.Rows[i]["StaffName"].ToString().Trim())
+                        && table.Rows[i + 1]["Time"].ToString().Trim() != (table.Rows[i]["Time"].ToString().Trim()))
                     {
                         ++rowNum;
                         resultTable.Rows.Add(table.Rows[i + 1]["StaffName"].ToString().Trim());

@@ -19,6 +19,7 @@ namespace StaffAssessment.Service.WorkingSection
                           ,A.[WorkingSectionID]
 	                      ,B.[LevelCode]
                           ,A.[WorkingSectionName]
+                          ,A.[AssessmentCoefficient]
                           ,A.[Type]
                           ,A.[OrganizationID]
 	                      ,B.Name as OrganizationName
@@ -39,7 +40,7 @@ namespace StaffAssessment.Service.WorkingSection
             DataTable dt = factory.Query(mySql, para);
             return dt;          
         }
-        public static int InsertWorkingSection(string mWorkingSectionID,string mProductionName, string mSectionType, string mWorkingSection, string mEnabed, string mEditor, string mRemark)
+        public static int InsertWorkingSection(string mWorkingSectionID, string mProductionName, string mSectionType, string mWorkingSectionName,string mWorkingSection, string mEnabed, string mEditor, string mRemark)
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
@@ -48,6 +49,7 @@ namespace StaffAssessment.Service.WorkingSection
                             ([WorkingSectionItemID]
                             ,[WorkingSectionID]
                             ,[WorkingSectionName]
+                            ,[AssessmentCoefficient]
                             ,[Type]
                             ,[OrganizationID]
                             ,[DisplayIndex]
@@ -62,6 +64,7 @@ namespace StaffAssessment.Service.WorkingSection
                             (@mWorkingSectionItemID
                             ,@mWorkingSectionID
                             ,@mWorkingSectionName
+                            ,@AssessmentCoefficient
                             ,@mType
                             ,@mOrganizationID
                             ,null
@@ -74,24 +77,26 @@ namespace StaffAssessment.Service.WorkingSection
                             ,@mRemarks)";
             SqlParameter[] para = { new SqlParameter("@mWorkingSectionItemID",System.Guid.NewGuid().ToString()),
                                     new SqlParameter("@mWorkingSectionID", mWorkingSectionID),
-                                    new SqlParameter("@mWorkingSectionName", mWorkingSection),
+                                    new SqlParameter("@mWorkingSectionName", mWorkingSectionName),
+                                    new SqlParameter("@AssessmentCoefficient", mWorkingSection),
                                     new SqlParameter("@mType", mSectionType),
                                     new SqlParameter("@mOrganizationID", mProductionName),
                                     new SqlParameter("@mCreator", mEditor),
-                                    new SqlParameter("@mCreatedTime",DateTime.Now.ToString()),
+                                    new SqlParameter("@mCreatedTime",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
                                     new SqlParameter("@mEnabled", mEnabed),
                                     new SqlParameter("@mRemarks", mRemark)};
             int dt = factory.ExecuteSQL(mySql, para);
             return dt;              
         }
-        public static int EditWorkingSection(string mWorkingSectionItemID,string mWorkingSectionID, string mProductionName, string mSectionType, string mWorkingSection, string mEnabed, string mEditor, string mRemark) 
+        public static int EditWorkingSection(string mWorkingSectionItemID, string mWorkingSectionID, string mProductionName, string mSectionType, string mWorkingSectionName, string mWorkingSection, string mEnabed, string mEditor, string mRemark) 
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
 
             string mySql = @"UPDATE [dbo].[system_WorkingSection]
                                SET [WorkingSectionID] =@mWorkingSectionID
-                                  ,[WorkingSectionName] = @mWorkingSectionName
+                                  ,WorkingSectionName=@mWorkingSectionName
+                                  ,[AssessmentCoefficient] = @mWorkingSection
                                   ,[Type] = @mType
                                   ,[OrganizationID] = @mOrganizationID                                 
                                   ,[Creator] = @mCreator
@@ -102,11 +107,12 @@ namespace StaffAssessment.Service.WorkingSection
             SqlParameter[] para = { 
                                     new SqlParameter("@mWorkingSectionItemID", mWorkingSectionItemID),
                                     new SqlParameter("@mWorkingSectionID", mWorkingSectionID),
-                                    new SqlParameter("@mWorkingSectionName", mWorkingSection),
+                                    new SqlParameter("@mWorkingSectionName", mWorkingSectionName),
+                                    new SqlParameter("@mWorkingSection", mWorkingSection),
                                     new SqlParameter("@mType", mSectionType),
                                     new SqlParameter("@mOrganizationID", mProductionName),
                                     new SqlParameter("@mCreator", mEditor),
-                                    new SqlParameter("@mCreatedTime",DateTime.Now.ToString()),
+                                    new SqlParameter("@mCreatedTime",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
                                     new SqlParameter("@mEnabled", mEnabed),
                                     new SqlParameter("@mRemarks", mRemark)};
             int dt = factory.ExecuteSQL(mySql, para);

@@ -71,6 +71,7 @@ function LoadAssessmentGroupGrid() {
 function onOrganisationTreeClick(node) {
     $('#organizationName').textbox('setText', node.text);
     mOrganizationId = node.OrganizationId;
+    mProductionID = node.OrganizationId;
     // LoadStaffInfo(mOrganizationId);
     LoadWorkingSection(mOrganizationId);
 }
@@ -85,7 +86,7 @@ function LoadWorkingSection(mValue) {
             var myData = jQuery.parseJSON(msg.d);
             $('#workingSection').combobox({
                 valueField: 'WorkingSectionID',
-                textField: 'WorkingSectionName',
+                textField: 'WorkingSectionType',
                 panelHeight: 'auto',
                 columns: [[
                     { field: 'WorkingSectionID', title: '', width: 60, hidden: true },
@@ -95,7 +96,6 @@ function LoadWorkingSection(mValue) {
                 data: myData.rows,
                 onSelect: function (record) {
                     mWorkingSectionID = record.WorkingSectionID;
-                    mProductionID = record.OrganizationID;
                 }
             });
         },
@@ -113,7 +113,10 @@ function LoadMainDataGrid(type, myData) {
                   //{ field: 'CycleType', title: '考核周期', width: 60 },
                   { field: 'StaffName', title: '员工', width: 60,align:'left' },
                   { field: 'Time', title: '考核日期', width: 120, align: 'center' },
-                  { field: 'TimeStamp', title: '计算时间', width: 140, align: 'center' },
+                  { field: 'AssessmentCoefficient', title: '考核系数', width: 100, align: 'center' },
+                  { field: 'Value', title: '总分', width: 100, align: 'center' },
+                  { field: 'RowNo', title: '排名', width: 100, align: 'center' },
+                  //{ field: 'TimeStamp', title: '计算时间', width: 140, align: 'center' },
                   {
                       field: 'edit', title: '详表', width: 80, formatter: function (value, row, index) {
                           var str = '<a href="#" onclick="AssessmentResultdetail(\'' + row.KeyId + '\')"><img class="iconImg" src = "/lib/ealib/themes/icons/search.png" title="详表" onclick="AssessmentResultdetail(\'' + row.KeyId + '\')"/>详表</a>';
@@ -138,11 +141,11 @@ function LoadMainDetail(type, myData) {
     if (type == "first") {
         $('#grid_MainDetail').datagrid({
             columns: [[
-                  { field: 'Id', title: '岗位名称', width: 80, hidden: true },
-                  { field: 'AssessmentName', title: '考核项', width: 100, align: 'center' },
-                  { field: 'WeightedValue', title: '权重', width: 40, align: 'center' },
-                  { field: 'BestValue', title: '最好值', width: 55, align: 'center' },
-                  { field: 'WorstValue', title: '最差值', width: 55, align: 'center' },
+                  { field: 'ObjectName', title: '考核元素', width: 70, align: 'center' },
+                  { field: 'AssessmentName', title: '考核项', width: 75, align: 'center' },
+                  { field: 'WeightedValue', title: '权重', width: 45, align: 'center' },
+                  { field: 'BestValue', title: '最好值', width: 45, align: 'center' },
+                  { field: 'WorstValue', title: '最差值', width: 45, align: 'center' },
                   { field: 'AssessmenScore', title: '考核分', width: 55, align: 'center' },
                   { field: 'WeightedAverageCredit', title: '加权分', width: 55, align: 'center' }
             ]],
@@ -166,17 +169,19 @@ function Query() {
         var mUrl = "";
         var mData = "";
         if (mStatisticalCycle != "year") {
-            if (mStatisticalCycle == "day") {
-                mStartTime = $('#date_sday').datebox('getValue');
-                mEndTime = $('#date_eday').datebox('getValue');
-            } else if (mStatisticalCycle == "month") {
+            if (mStatisticalCycle == "month") {
                 mStartTime = $('#date_smonth').combobox('getValue');
                 mEndTime = $('#date_emonth').combobox('getValue');
+                if (mStartTime > mEndTime) {
+                    $.messager.alert('错误', '开始日期不能大于结束日期！');
+                }
             }
-            if (mStartTime > mEndTime) {
-                $.messager.alert('错误', '开始日期不能大于结束日期！');
-            }
-        } else {
+        }
+        if (mStatisticalCycle == "day") {
+            mStartTime = $('#date_sday').datebox('getValue');
+            mEndTime = '';
+        }
+        else {
             mStartTime = $('#date_year').datebox('getValue');
             mEndTime = "";
         }
@@ -218,7 +223,7 @@ function AssessmentResultdetail(mAssessmentId) {
     $.ajax({
         type: "POST",
         url: "StaffAssessmentResultDetial.aspx/GetAssessmentResultdetail",
-        data: "{mAssessmentId:'" + mAssessmentId + "',mOrganizationID:'" + data.OrganizationID + "'}",
+        data: "{mAssessmentId:'" + mAssessmentId + "'}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
@@ -319,7 +324,7 @@ function InitialDate(type) {
         $(".myear").hide();
         $(".mmonth").hide();
         $(".mday").show();
-        beforeDate.setDate(nowDate.getDate() - 10);
+        beforeDate.setDate(nowDate.getDate());
         var startDate = beforeDate.getFullYear() + '-' + (beforeDate.getMonth() + 1) + '-' + (beforeDate.getDate());
         var endDate = nowDate.getFullYear() + '-' + (nowDate.getMonth() + 1) + '-' + nowDate.getDate();
         sday = $('#date_sday').datebox('setValue', startDate);

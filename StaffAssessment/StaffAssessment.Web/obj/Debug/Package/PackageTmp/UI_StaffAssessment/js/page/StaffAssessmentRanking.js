@@ -87,7 +87,7 @@ function LoadWorkingSection(mValue) {
                 panelHeight: 'auto',
                 columns: [[
                     { field: 'WorkingSectionID', title: '', width: 60, hidden: true },
-                    { field: 'WorkingSectionName', title: '岗位名称', width: 80 },
+                    { field: 'WorkingSectionName', title: '岗位类型', width: 80 },
                     { field: 'OrganizationName', title: '产线', width: 100 }
                 ]],
                 data: myData.rows,

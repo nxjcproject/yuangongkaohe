@@ -54,7 +54,6 @@ D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.
 D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Web\obj\Debug\StaffAssessment.Web.dll
 D:\GitProjectProgram\Project_NXJC\yuangongkaohe\StaffAssessment\StaffAssessment.Web\obj\Debug\StaffAssessment.Web.pdb
 E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Web\bin\RunIndicators.dll
-E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Web\bin\StaffAssessment.dll
 E:\git仓库\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Web\bin\StaffAssessment.Web.dll
 E:\git仓库\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Web\bin\StaffAssessment.Web.pdb
 E:\git仓库\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Web\bin\AutoMapper.dll
@@ -85,3 +84,5 @@ C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版�
 C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Web\obj\Debug\StaffAssessment.Web.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Web\obj\Debug\StaffAssessment.Web.dll
 C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Web\obj\Debug\StaffAssessment.Web.pdb
+E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Web\bin\StaffAssessment.dll
+E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Web\bin\StaffAssessment.pdb
