@@ -18,3 +18,8 @@ E:\git仓库\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\S
 E:\git仓库\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.csprojResolveAssemblyReference.cache
 E:\git仓库\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.dll
 E:\git仓库\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.pdb
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\bin\Debug\StaffAssessment.Infrastructure.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\bin\Debug\StaffAssessment.Infrastructure.pdb
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.pdb

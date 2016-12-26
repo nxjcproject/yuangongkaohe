@@ -26,7 +26,7 @@
 </head>
 <body>
     <div id="cc" class="easyui-layout"data-options="fit:true,border:false" >    
-         <div data-options="region:'west',split:true" style="width: 230px;">
+         <div data-options="region:'west',split:true" style="width: 150px;">
             <uc1:OrganisationTree ID="OrganisationTree_ProductionLine" runat="server" />
         </div>
           <div id="toorBar" title="" style="height:28px;padding:10px;">

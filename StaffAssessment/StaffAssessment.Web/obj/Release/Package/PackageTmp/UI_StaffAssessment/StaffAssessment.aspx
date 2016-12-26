@@ -26,7 +26,7 @@
 </head>
 <body>
     <div class="easyui-layout"data-options="fit:true,border:false" >    
-         <div data-options="region:'west',split:true" style="width: 230px;">
+         <div data-options="region:'west',split:true" style="width: 150px;">
             <uc1:OrganisationTree ID="OrganisationTree_ProductionLine" runat="server" />
          </div>
          <div data-options="region:'center',fit:true,border:false"style="padding:5px;background:#eee;">
@@ -55,6 +55,10 @@
                                          <td>                           
                                             <input id="AssessmentVersion" class="easyui-combobox" style="width:100px"/>                   
                                         </td>
+                                         <%--<td>员工:</td>
+                                         <td >                               
+                                            <input id="Staff" class="easyui-combobox" style="width:100px" />               
+                                        </td>--%>
                                            </tr>
                                    </table>
                                   <table>

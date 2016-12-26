@@ -45,3 +45,17 @@ E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Service\bin\Release\S
 E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.csprojResolveAssemblyReference.cache
 E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.dll
 E:\git仓库\yuangongkaohe\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.pdb
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Service.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Service.pdb
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Release\AutoMapper.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Release\AutoSetParameters.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Release\EasyUIJsonParser.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Release\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Release\RunIndicators.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Infrastructure.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Release\Standard_GB16780-2012.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.Infrastructure.pdb
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Release\StaffAssessment.pdb
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Release\StaffAssessment.Service.pdb

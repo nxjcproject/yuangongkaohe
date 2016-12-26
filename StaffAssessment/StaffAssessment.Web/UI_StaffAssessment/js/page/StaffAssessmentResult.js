@@ -171,6 +171,10 @@ function Query() {
         LoadColumns();
         mUrl = "StaffAssessmentResult.aspx/GetAllAssessmentResult";
         mData = " {mProductionID:'" + mProductionID + "',mWorkingSectionID:'" + mWorkingSectionID + "',mGroupId:'" + mGroupId + "',mStartTime:'" + mStartTime + "',mEndTime:'" + mEndTime + "',mStatisticalCycle:'" + mStatisticalCycle + "'}";
+        var win = $.messager.progress({
+            title: '请稍后',
+            msg: '数据载入中...'
+        });
         $.ajax({
             type: "POST",
             url: mUrl,
@@ -178,6 +182,7 @@ function Query() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (msg) {
+                $.messager.progress('close');
                 var myData = jQuery.parseJSON(msg.d);
                 if (myData.total == 0) {
                     LoadMainDataGrid("last", []);
@@ -186,7 +191,11 @@ function Query() {
                     LoadMainDataGrid("last", myData);
                 }
             },
+            beforeSend: function (XMLHttpRequest) {
+                win;
+            },
             error: function () {
+                $.messager.progress('close');
                 $("#grid_Main").datagrid('loadData', []);
                 $.messager.alert('失败', '加载失败！');
             }

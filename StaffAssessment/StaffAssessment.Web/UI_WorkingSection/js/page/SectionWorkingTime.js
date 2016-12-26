@@ -114,7 +114,11 @@ function Query() {
     if (mOrganizationId == "" || mOrganizationId == undefined) {
         $.messager.alert('提示', '请选择组织机构！');
     }
-    workingSectionName=$('#section').combobox('getText');
+    workingSectionName = $('#section').combobox('getText');
+    var win = $.messager.progress({
+        title: '请稍后',
+        msg: '数据载入中...'
+    });
     $.ajax({
         type: "POST",
         url: "SectionWorkingTime.aspx/GetQueryData",
@@ -122,7 +126,7 @@ function Query() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
-            mger.window('close');
+            $.messager.progress('close');
             var myData = jQuery.parseJSON(msg.d);
             if (myData.total == 0) {
                 LoadMainDataGrid("last", []);
@@ -132,9 +136,10 @@ function Query() {
             }
         },
         beforeSend: function (XMLHttpRequest) {
-            mger = $.messager.alert('提示', "加载中...");
+            win;
         },
         error: function () {
+            $.messager.progress('close');
             $("#grid_Main").datagrid('loadData', []);
             $.messager.alert('失败', '获取数据失败');
         }

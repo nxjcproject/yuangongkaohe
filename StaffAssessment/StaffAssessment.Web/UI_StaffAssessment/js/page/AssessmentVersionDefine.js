@@ -118,6 +118,10 @@ function Query() {
         mWorkingSectionItemID = $('#workingSection').combobox('getValue');
         var mUrl = "AssessmentVersionDefine.aspx/GetAssessmentVersionDefine";
         var mData = " {mOrganizationId:'" + mOrganizationId + "',mWorkingSectionItemID :'" + mWorkingSectionItemID + "'}";
+        var win = $.messager.progress({
+            title: '请稍后',
+            msg: '数据载入中...'
+        });
         $.ajax({
                 type: "POST",
                 url: mUrl,
@@ -125,6 +129,7 @@ function Query() {
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (msg) {
+                    $.messager.progress('close');
                     var myData = jQuery.parseJSON(msg.d);
                     if (myData.total == 0) {
                         LoadMainDataGrid("last", []);
@@ -134,8 +139,12 @@ function Query() {
                     }
                 },
                 error: function () {
+                    $.messager.progress('close');
                     LoadMainDataGrid("last", []);
                     $.messager.alert('提示', '加载失败！');
+                },
+                beforeSend: function (XMLHttpRequest) {
+                    win;
                 }
             });
     }

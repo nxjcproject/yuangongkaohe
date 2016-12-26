@@ -10,3 +10,7 @@ C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版�
 C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\bin\Release\StaffAssessment.Infrastructure.pdb
 C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Release\StaffAssessment.Infrastructure.dll
 C:\Users\Administrator\Desktop\yuangongkaohe(修改后)\yuangongkaohe(发布版本修改后，但未发布)\yuangongkaohe\StaffAssessment\StaffAssessment.Infrastructure\obj\Release\StaffAssessment.Infrastructure.pdb
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\bin\Release\StaffAssessment.Infrastructure.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\bin\Release\StaffAssessment.Infrastructure.pdb
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\obj\Release\StaffAssessment.Infrastructure.dll
+C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\obj\Release\StaffAssessment.Infrastructure.pdb

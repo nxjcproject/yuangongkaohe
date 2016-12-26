@@ -91,6 +91,10 @@ function historyQuery()
     }
     var mStartTime = $('#startTime').datebox('getValue');
     var mEndTime = $('#endTime').datebox('getValue');
+    var win = $.messager.progress({
+        title: '请稍后',
+        msg: '数据载入中...'
+    });
     $.ajax({
         type: "POST",
         url: "StaffSignInModify.aspx/GetHistoryStaffSignInData",
@@ -98,7 +102,7 @@ function historyQuery()
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
-            mger.window('close');
+            $.messager.progress('close');
             var myData = jQuery.parseJSON(msg.d);
             if (myData.total == 0) {
                 LoadMainDataGrid("last", []);
@@ -109,9 +113,10 @@ function historyQuery()
         },
         beforeSend: function (XMLHttpRequest) {
             //alert('远程调用开始...');
-            mger = $.messager.alert('提示', "加载中...");
+            win;
         },
         error: function () {
+            $.messager.progress('close');
             $("#grid_Main").datagrid('loadData', []);
             $.messager.alert('失败', '获取数据失败');
         }
