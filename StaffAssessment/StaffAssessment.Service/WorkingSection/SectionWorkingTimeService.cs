@@ -16,13 +16,12 @@ namespace StaffAssessment.Service.WorkingSection
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory factory = new SqlServerDataFactory(connectionString);
             string mySql = @"SELECT A.[WorkingSectionID]
-			                    ,[DisplayIndex]
+			                    ,A.[DisplayIndex]
 			                    ,A.[WorkingSectionType] as [WorkingSectionName]
 			                    ,A.[OrganizationID]
-			                    [DisplayIndex]
 			                    ,A.[Enabled]
 			                    FROM [dbo].[system_WorkingSectionType] A
-			                    where A.[OrganizationID] = 'zc_nxjc_byc_byf'";
+			                    where A.[OrganizationID] = @mOrganizationID";
             SqlParameter[] para = {
                                     new SqlParameter("@mOrganizationID", mOrganizationID)
                                  };

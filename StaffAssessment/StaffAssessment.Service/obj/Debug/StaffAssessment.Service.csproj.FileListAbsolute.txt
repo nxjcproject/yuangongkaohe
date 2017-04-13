@@ -61,3 +61,13 @@ C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaoh
 C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.dll
 C:\Users\Administrator\Desktop\第一轮修改\yuangongkaohe-master\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.pdb
+C:\Users\Xu\Desktop\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Service.dll
+C:\Users\Xu\Desktop\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Service.pdb
+C:\Users\Xu\Desktop\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\AutoMapper.dll
+C:\Users\Xu\Desktop\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\RunIndicators.dll
+C:\Users\Xu\Desktop\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Infrastructure.dll
+C:\Users\Xu\Desktop\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Infrastructure.pdb
+C:\Users\Xu\Desktop\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.pdb
+C:\Users\Xu\Desktop\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.csprojResolveAssemblyReference.cache
+C:\Users\Xu\Desktop\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.dll
+C:\Users\Xu\Desktop\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.pdb

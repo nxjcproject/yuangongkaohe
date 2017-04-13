@@ -20,7 +20,7 @@ namespace StaffAssessment.Web.UI_WorkingSection
             {
 #if DEBUG
                 ////////////////////调试用,自定义的数据授权
-                List<string> m_DataValidIdItems = new List<string>() { "zc_nxjc_byc_byf" };
+                List<string> m_DataValidIdItems = new List<string>() { "zc_nxjc_byc_byf", "zc_nxjc_znc_znf" };
                 AddDataValidIdGroup("ProductionOrganization", m_DataValidIdItems);
                 this.OrganisationTree_ProductionLine.LeveDepth = 5;
 #elif RELEASE
