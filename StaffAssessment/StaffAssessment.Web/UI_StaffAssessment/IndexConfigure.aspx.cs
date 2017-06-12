@@ -64,11 +64,11 @@ namespace StaffAssessment.Web.UI_StaffAssessment
             return json;
         }
         [WebMethod]
-        public static string SaveIndex(string json, string assessmentId)
+        public static string SaveIndex(string json, string assessmentId, string mOrganizationId)
         {
 
             string myName = mUserName;
-            IndexConfigureService.SaveIndexId(json, assessmentId, myName);
+            IndexConfigureService.SaveIndexId(json, assessmentId, myName, mOrganizationId);
             return "success";
         }
     }

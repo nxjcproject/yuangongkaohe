@@ -36,7 +36,7 @@ function LoadproductionName(mValue) {
                 data: myData,
                 valueField: 'OrganizationID',
                 textField: 'Name',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 onSelect: function (record) {
                     mProductionName = record.OrganizationID;
                 }
@@ -56,7 +56,7 @@ function LoadSectionType(type, mydata) {
         $('#sectionType').combobox({
             valueField: 'id',
             textField: 'WorkingSectionType',
-            panelHeight: 'auto',
+            panelHeight: '300',
             data: [],
             onSelect: function (record) {             
                 if (record.id == 0) {
@@ -177,6 +177,10 @@ function Query() {
     if (mOrganizationId == "" || mOrganizationId == undefined) {
         $.messager.alert('提示', '请选择组织机构！');
     }
+    var win = $.messager.progress({
+        title: '请稍后',
+        msg: '数据载入中...'
+    });
     $.ajax({
         type: "POST",
         url: "WorkingSectionDefine.aspx/GetQueryData",
@@ -184,7 +188,7 @@ function Query() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
-            mger.window('close');
+            $.messager.progress('close');
             var myData = jQuery.parseJSON(msg.d);
             if (myData.total == 0) {
                 LoadMainDataGrid("last", []);
@@ -195,9 +199,10 @@ function Query() {
         },
         beforeSend: function (XMLHttpRequest) {
             //alert('远程调用开始...');
-            mger = $.messager.alert('提示', "加载中...");
+            win;
         },
         error: function () {
+            $.messager.progress('close');
             $("#grid_Main").datagrid('loadData', []);
             $.messager.alert('失败', '获取数据失败');
         }

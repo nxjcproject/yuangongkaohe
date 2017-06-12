@@ -57,7 +57,7 @@
     </Reference>
     <Reference Include="StaffAssessment, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\QQ接收文件\StaffAssessment(3)\StaffAssessment\StaffAssessment\bin\Debug\StaffAssessment.dll</HintPath>
+      <HintPath>bin\StaffAssessment.dll</HintPath>
     </Reference>
     <Reference Include="Standard_GB16780-2012, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

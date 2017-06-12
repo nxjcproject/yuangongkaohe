@@ -32,16 +32,16 @@
       <publishTime>12/26/2016 16:39:28</publishTime>
     </File>
     <File Include="bin/StaffAssessment.dll">
-      <publishTime>12/26/2016 16:39:28</publishTime>
+      <publishTime>05/12/2017 09:43:05</publishTime>
     </File>
     <File Include="bin/StaffAssessment.Infrastructure.dll">
-      <publishTime>03/24/2017 10:32:15</publishTime>
+      <publishTime>05/10/2017 09:45:21</publishTime>
     </File>
     <File Include="bin/StaffAssessment.Service.dll">
-      <publishTime>03/24/2017 10:32:15</publishTime>
+      <publishTime>05/12/2017 10:19:32</publishTime>
     </File>
     <File Include="bin/StaffAssessment.Web.dll">
-      <publishTime>03/24/2017 10:32:16</publishTime>
+      <publishTime>05/12/2017 10:19:33</publishTime>
     </File>
     <File Include="bin/Standard_GB16780-2012.dll">
       <publishTime>12/26/2016 16:39:28</publishTime>
@@ -4610,7 +4610,7 @@
       <publishTime>12/26/2016 16:39:28</publishTime>
     </File>
     <File Include="UI_StaffAssessment/AssessmentVersionDefine.aspx">
-      <publishTime>12/26/2016 16:39:28</publishTime>
+      <publishTime>05/10/2017 09:30:02</publishTime>
     </File>
     <File Include="UI_StaffAssessment/IndexConfigure.aspx">
       <publishTime>12/26/2016 16:39:28</publishTime>
@@ -4619,13 +4619,13 @@
       <publishTime>12/26/2016 16:39:28</publishTime>
     </File>
     <File Include="UI_StaffAssessment/js/page/AssessmentVersionDefine.js">
-      <publishTime>12/26/2016 16:39:28</publishTime>
+      <publishTime>05/22/2017 15:56:02</publishTime>
     </File>
     <File Include="UI_StaffAssessment/js/page/IndexConfigure.js">
-      <publishTime>12/26/2016 16:39:28</publishTime>
+      <publishTime>05/11/2017 17:51:43</publishTime>
     </File>
     <File Include="UI_StaffAssessment/js/page/StaffAssessment.js">
-      <publishTime>12/26/2016 16:39:28</publishTime>
+      <publishTime>05/22/2017 15:56:22</publishTime>
     </File>
     <File Include="UI_StaffAssessment/js/page/StaffAssessmentRanking.js">
       <publishTime>12/26/2016 16:39:28</publishTime>
@@ -4634,7 +4634,7 @@
       <publishTime>12/26/2016 16:39:28</publishTime>
     </File>
     <File Include="UI_StaffAssessment/js/page/StaffAssessmentResultDetial.js">
-      <publishTime>12/26/2016 16:39:28</publishTime>
+      <publishTime>05/22/2017 15:56:53</publishTime>
     </File>
     <File Include="UI_StaffAssessment/StaffAssessment.aspx">
       <publishTime>12/26/2016 16:39:28</publishTime>
@@ -4649,10 +4649,10 @@
       <publishTime>12/26/2016 16:39:28</publishTime>
     </File>
     <File Include="UI_StaffSignIn/js/page/StaffSignIn.js">
-      <publishTime>12/26/2016 16:39:28</publishTime>
+      <publishTime>05/09/2017 14:24:24</publishTime>
     </File>
     <File Include="UI_StaffSignIn/js/page/StaffSignInModify.js">
-      <publishTime>12/26/2016 16:39:28</publishTime>
+      <publishTime>05/09/2017 14:24:37</publishTime>
     </File>
     <File Include="UI_StaffSignIn/StaffSignIn.aspx">
       <publishTime>12/26/2016 16:39:28</publishTime>
@@ -4661,10 +4661,10 @@
       <publishTime>12/26/2016 16:39:28</publishTime>
     </File>
     <File Include="UI_WorkingSection/js/page/SectionWorkingTime.js">
-      <publishTime>12/26/2016 16:39:28</publishTime>
+      <publishTime>05/22/2017 15:53:08</publishTime>
     </File>
     <File Include="UI_WorkingSection/js/page/WorkingSectionDefine.js">
-      <publishTime>12/26/2016 16:39:28</publishTime>
+      <publishTime>05/22/2017 15:49:20</publishTime>
     </File>
     <File Include="UI_WorkingSection/SectionWorkingTime.aspx">
       <publishTime>12/26/2016 16:39:28</publishTime>
@@ -4673,7 +4673,7 @@
       <publishTime>12/26/2016 16:39:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/24/2017 10:32:19</publishTime>
+      <publishTime>05/22/2017 16:00:36</publishTime>
     </File>
   </ItemGroup>
 </Project>

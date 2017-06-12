@@ -36,7 +36,7 @@ function LoadproductionName(mValue) {
                 data: myData,
                 valueField: 'OrganizationID',
                 textField: 'Name',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 onSelect: function (record) {
                     mProductionName = record.OrganizationID;
                 }
@@ -56,7 +56,7 @@ function LoadSectionType(type, mydata) {
         $('#sectionType').combobox({
             valueField: 'id',
             textField: 'WorkingSectionType',
-            panelHeight: 'auto',
+            panelHeight: '300',
             data: [],
             onSelect: function (record) {             
                 if (record.id == 0) {
@@ -98,8 +98,8 @@ function LoadMainDataGrid(type, myData) {
                     {
                         field: 'edit', title: '编辑', width: 150, formatter: function (value, row, index) {
                             var str = "";
-                            str = '<a href="#" onclick="editWorkingDefine(true,\'' + row.WorkingSectionItemID + '\')"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_edit.png" title="编辑页面" onclick="editWorkingDefine(true,\'' + row.WorkingSectionItemID + '\')"/>编辑</a>';
-                            str = str + '<a href="#" onclick="deleteWorkingDefine(\'' + row.WorkingSectionItemID + '\')"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_delete.png" title="删除页面"  onclick="deleteWorkingDefine(\'' + row.WorkingSectionItemID + '\')"/>删除</a>';
+                            str = '<a href="#" onclick="editWorkingDefine(true,\'' + row.WorkingSectionItemID + '\')"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_edit.png" style="border:none;" title="编辑页面" onclick="editWorkingDefine(true,\'' + row.WorkingSectionItemID + '\')"/>编辑</a>';
+                            str = str + '<a href="#" onclick="deleteWorkingDefine(\'' + row.WorkingSectionItemID + '\')"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_delete.png" style="border:none;" title="删除页面"  onclick="deleteWorkingDefine(\'' + row.WorkingSectionItemID + '\')"/>删除</a>';
                             //str = str + '<img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_delete.png" title="删除页面" onclick="DeletePageFun(\'' + row.id + '\');"/>删除';
                             return str;
                         }

@@ -119,7 +119,7 @@ function LoadMainDataGrid(type, myData) {
                   //{ field: 'TimeStamp', title: '计算时间', width: 140, align: 'center' },
                   {
                       field: 'edit', title: '详表', width: 80, formatter: function (value, row, index) {
-                          var str = '<a href="#" onclick="AssessmentResultdetail(\'' + row.KeyId + '\')"><img class="iconImg" src = "/lib/ealib/themes/icons/search.png" title="详表" onclick="AssessmentResultdetail(\'' + row.KeyId + '\')"/>详表</a>';
+                          var str = '<a href="#" onclick="AssessmentResultdetail(\'' + row.KeyId + '\')"><img class="iconImg" src = "/lib/ealib/themes/icons/search.png" style="border:none;" title="详表" onclick="AssessmentResultdetail(\'' + row.KeyId + '\')"/>详表</a>';
                           return str;
                       }
                   }

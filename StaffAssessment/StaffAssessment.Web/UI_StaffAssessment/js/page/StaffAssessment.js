@@ -36,7 +36,7 @@ function LoadWorkingSectionList(mValue) {
             $('#workingSection').combobox({
                 valueField: 'WorkingSectionItemID',
                 textField: 'WorkingSectionName',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 data: myData.rows,
                 onSelect: function (record) {
                     mWorkingSectionItemID = record.WorkingSectionItemID;
@@ -341,7 +341,7 @@ function LoadMainDataGrid(type, myData) {
                     { field: 'EndTime', title: '考核结束时间', width: 120 },
                     {
                         field: 'edit', title: '查看', width: 60, formatter: function (value, row, index) {
-                            return  '<a href="#" onclick="AssessmentResultdetail(\'' + row.KeyId + '\',\''+row.StaffName+'\')"><img class="iconImg" src = "/lib/ealib/themes/icons/search.png" title="查看" onclick="AssessmentResultdetail(\'' + row.KeyId + '\',\''+row.StaffName+ '\')"/>查看</a>';                           
+                            return '<a href="#" onclick="AssessmentResultdetail(\'' + row.KeyId + '\',\'' + row.StaffName + '\')"><img class="iconImg" src = "/lib/ealib/themes/icons/search.png" style="border:none;" title="查看" onclick="AssessmentResultdetail(\'' + row.KeyId + '\',\'' + row.StaffName + '\')"/>查看</a>';
                         }
                     }
             ]],

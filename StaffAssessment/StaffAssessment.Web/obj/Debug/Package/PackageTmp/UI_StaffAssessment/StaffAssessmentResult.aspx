@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="cc" class="easyui-layout"data-options="fit:true,border:false" >    
-         <div data-options="region:'west',split:true" style="width: 230px;">
+         <div data-options="region:'west',split:true" style="width: 150px;">
             <uc1:OrganisationTree ID="OrganisationTree_ProductionLine" runat="server" />
         </div>
           <div id="toorBar" title="" style="height:56px;padding:10px;">
@@ -36,7 +36,7 @@
                         <td >                               
                             <input id="organizationName" class="easyui-textbox" readonly="readonly"style="width:120px" />               
                        </td>    
-                         <td>岗位:</td>
+                         <td>岗位类型:</td>
                         <td >                               
                            <input class="easyui-combobox" type="text" id="workingSection" style="width:100px" />                 
                         </td>                            

@@ -26,7 +26,7 @@
 </head>
 <body>
     <div id="cc" class="easyui-layout"data-options="fit:true,border:false" >    
-         <div data-options="region:'west',split:true" style="width: 230px;">
+         <div data-options="region:'west',split:true" style="width: 150px;">
             <uc1:OrganisationTree ID="OrganisationTree_ProductionLine" runat="server" />
         </div>
         <div data-options="region:'center',border:false" style="padding:5px;background:#eee;">
@@ -105,7 +105,7 @@
 	    		    </tr>
                     <tr>
 	    			    <td>考核类型：</td> 
-	    			    <td><input class="easyui-textbox" type="text" required="required" id="eAssessmentype" style="width:120px" />(*必填)</td>
+	    			    <td><input class="easyui-textbox" type="text" required="required" disabled="true" id="eAssessmentype" style="width:120px" />(*必填)</td>
 	    		    </tr>
 	    		    <tr> 
                      <tr>

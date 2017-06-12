@@ -36,7 +36,7 @@ function LoadWorkingSectionList(mValue) {
             $('#workingSection').combobox({
                 valueField: 'WorkingSectionItemID',
                 textField: 'WorkingSectionName',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 data: myData.rows,
                 onSelect: function (record) {
                     mWorkingSectionItemID = record.WorkingSectionItemID;

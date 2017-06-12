@@ -71,14 +71,14 @@ namespace StaffAssessment.Service.StaffAssessment
 //                tsCope.Complete();
 //            }
 //        }
-        public static void SaveIndexId(string json, string assessmentId, string myName)
+        public static void SaveIndexId(string json, string assessmentId, string myName, string mOrganizationId)
         {
 
             //string[] detailJsons = json.JsonPickArray("StandardIndex");
             //string  mId = json.JsonPick("StandardIndex");
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             //string[] shuju = json.Split('[');
-            string[] shuju = Regex.Split(json, "children", RegexOptions.IgnoreCase);
+            string[] shuju = Regex.Split(json, "\"id\":", RegexOptions.IgnoreCase);
 
             using (TransactionScope tsCope = new TransactionScope())
             {

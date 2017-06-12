@@ -61,7 +61,7 @@ namespace StaffAssessment.Service.StaffAssessment
 				  ,[NXJC].[dbo].[assessment_ ShiftAssessmentResultGroup] D
 				  ,[NXJC].[dbo].[assessment_ShiftAssessmentResultDetail] B
 				  , [NXJC].[dbo].[system_WorkingSection] E
-				  where  A.[OrganizationID]='zc_nxjc_byc_byf'
+				  where  A.[OrganizationID]=@mProductionID
 				         and C.[StaffInfoItemId]=A.[StaffID]
                          and A.[WorkingSectionID]= E.WorkingSectionItemID
 					     and E.WorkingSectionID =@mWorkingSectionID

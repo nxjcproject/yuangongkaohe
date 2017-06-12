@@ -105,7 +105,7 @@
 	    		    </tr>
                     <tr>
 	    			    <td>考核类型：</td> 
-	    			    <td><input class="easyui-textbox" type="text" required="required" id="eAssessmentype" style="width:120px" />(*必填)</td>
+	    			    <td><input class="easyui-textbox" type="text" required="required" disabled="true" id="eAssessmentype" style="width:120px" />(*必填)</td>
 	    		    </tr>
 	    		    <tr> 
                      <tr>

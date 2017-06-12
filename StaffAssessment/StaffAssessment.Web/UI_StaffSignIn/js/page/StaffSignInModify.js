@@ -38,7 +38,7 @@ function LoadStaffInfo(mValue) {
                 data:myData.rows,
                 valueField: 'StaffInfoItemId',
                 textField: 'text',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 onSelect: function (record) {
                     mStaffId = record.StaffInfoItemId;
                     

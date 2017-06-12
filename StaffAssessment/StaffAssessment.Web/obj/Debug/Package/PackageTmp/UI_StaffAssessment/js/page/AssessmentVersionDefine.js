@@ -95,14 +95,14 @@ function LoadWorkingSection(mValue) {
             $('#workingSection').combobox({
                 valueField: 'WorkingSectionItemID',
                 textField: 'WorkingSectionName',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 data: comboboxData
             });
             $('#workingSection').combobox('select','0');
             $('#eWorkingSection').combobox({
                 valueField: 'WorkingSectionItemID',
                 textField: 'WorkingSectionName',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 data: myData.rows
             });
         },
@@ -118,6 +118,10 @@ function Query() {
         mWorkingSectionItemID = $('#workingSection').combobox('getValue');
         var mUrl = "AssessmentVersionDefine.aspx/GetAssessmentVersionDefine";
         var mData = " {mOrganizationId:'" + mOrganizationId + "',mWorkingSectionItemID :'" + mWorkingSectionItemID + "'}";
+        var win = $.messager.progress({
+            title: '请稍后',
+            msg: '数据载入中...'
+        });
         $.ajax({
                 type: "POST",
                 url: mUrl,
@@ -125,6 +129,7 @@ function Query() {
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (msg) {
+                    $.messager.progress('close');
                     var myData = jQuery.parseJSON(msg.d);
                     if (myData.total == 0) {
                         LoadMainDataGrid("last", []);
@@ -134,8 +139,12 @@ function Query() {
                     }
                 },
                 error: function () {
+                    $.messager.progress('close');
                     LoadMainDataGrid("last", []);
                     $.messager.alert('提示', '加载失败！');
+                },
+                beforeSend: function (XMLHttpRequest) {
+                    win;
                 }
             });
     }
@@ -357,6 +366,7 @@ function editFun(IsEdit, editContrastId) {
         }
     }
     $('#AddandEditor').window('open');
+    $('#eAssessmentype').textbox('setText', "KPI");
 }
 function deleteFun(editContrastId) {
     if (editContrastId != "") {
@@ -428,7 +438,7 @@ function LoadProcessLine(mValue) {
             $('#eProcessLine').combobox({
                 valueField: 'OrganizationID',
                 textField: 'Name',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 data: myData.rows,
                 onSelect: function (record) {
                     myOrganizationId = record.OrganizationID;
@@ -587,6 +597,7 @@ function editDetailFun(IsEdit, editContrastId) {
         }
     }
     $('#AddandEditorDetail').window('open');
+    $('#eStandardValue').numberbox('disable', true);
 }
 function saveDetail() {
 

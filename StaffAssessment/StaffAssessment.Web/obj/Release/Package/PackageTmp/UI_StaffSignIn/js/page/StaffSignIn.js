@@ -75,7 +75,7 @@ function LoadStaffInfo(mValue) {
                         data: myData.rows,
                         valueField: 'id',
                         textField: 'text',
-                        panelHeight: 'auto',
+                        panelHeight: '300',
                         onSelect: function (record) {
                             mStaffID = record.id;
                             itemId = record.StaffInfoItemId;
@@ -85,7 +85,7 @@ function LoadStaffInfo(mValue) {
                         data: myData.rows,
                         valueField: 'id',
                         textField: 'text',
-                        panelHeight: 'auto',
+                        panelHeight: '300',
                         onSelect: function (record) {
                             mStaffId = record.id;
                             itemID = record.StaffInfoItemId;
@@ -114,7 +114,7 @@ function LoadWorkingSection(mValue) {
             $('#workingSection').combobox({
                 valueField: 'WorkingSectionID',
                 textField: 'WorkingSectionName',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 data: myData.rows,
                 onSelect: function (record) {
                     mWorkingSectionID = record.WorkingSectionID;

@@ -187,7 +187,7 @@ function Save() {
     $.ajax({
         type: "POST",
         url: "IndexConfigure.aspx/SaveIndex",
-        data: '{assessmentId:"' + assessmentId + '",json:\'' + stra + '\'}',
+        data: '{mOrganizationId:"' + mOrganizationId + '",assessmentId:"' + assessmentId + '",json:\'' + stra + '\'}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {

@@ -95,14 +95,14 @@ function LoadWorkingSection(mValue) {
             $('#workingSection').combobox({
                 valueField: 'WorkingSectionItemID',
                 textField: 'WorkingSectionName',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 data: comboboxData
             });
             $('#workingSection').combobox('select','0');
             $('#eWorkingSection').combobox({
                 valueField: 'WorkingSectionItemID',
                 textField: 'WorkingSectionName',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 data: myData.rows
             });
         },
@@ -163,15 +163,15 @@ function LoadMainDataGrid(type, myData) {
                     {
                         field: 'edit', title: '编辑', width: 100, formatter: function (value, row, index) {
                             var str = "";
-                            str = '<a href="#" onclick="editFun(true,\'' + row.KeyId + '\')"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_edit.png" title="编辑页面" onclick="editFun(true,\'' + row.KeyId + '\')"/>编辑</a>';
-                            str = str + '<a href="#" onclick="deleteFun(\'' + row.KeyId + '\')"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_delete.png" title="删除页面"  onclick="deleteFun(\'' + row.KeyId + '\')"/>删除</a>';
+                            str = '<a href="#" onclick="editFun(true,\'' + row.KeyId + '\')"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_edit.png" style="border:none;" title="编辑页面" onclick="editFun(true,\'' + row.KeyId + '\')"/>编辑</a>';
+                            str = str + '<a href="#" onclick="deleteFun(\'' + row.KeyId + '\')"><img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_delete.png" style="border:none;" title="删除页面"  onclick="deleteFun(\'' + row.KeyId + '\')"/>删除</a>';
                             //str = str + '<img class="iconImg" src = "/lib/extlib/themes/images/ext_icons/notes/note_delete.png" title="删除页面" onclick="DeletePageFun(\'' + row.id + '\');"/>删除';
                             return str;
                         }
                     },
                     {
                         field: 'reserch', title: '查询考核项', width: 100,align:'center', formatter: function (value, row, index) {
-                            return '<a href="#" onclick="reserchFun(\'first\',\'' + row.KeyId + '\')"><img class="iconImg" src = "/lib/ealib/themes/icons/search.png" title="查看" onclick="reserchFun(\'first\',\'' + row.KeyId  + '\')"/>查看</a>';
+                            return '<a href="#" onclick="reserchFun(\'first\',\'' + row.KeyId + '\')"><img class="iconImg" src = "/lib/ealib/themes/icons/search.png" style="border:none;" title="查看" onclick="reserchFun(\'first\',\'' + row.KeyId + '\')"/>查看</a>';
                         }
                     }
 
@@ -366,6 +366,7 @@ function editFun(IsEdit, editContrastId) {
         }
     }
     $('#AddandEditor').window('open');
+    $('#eAssessmentype').textbox('setText', "KPI");
 }
 function deleteFun(editContrastId) {
     if (editContrastId != "") {
@@ -437,7 +438,7 @@ function LoadProcessLine(mValue) {
             $('#eProcessLine').combobox({
                 valueField: 'OrganizationID',
                 textField: 'Name',
-                panelHeight: 'auto',
+                panelHeight: '300',
                 data: myData.rows,
                 onSelect: function (record) {
                     myOrganizationId = record.OrganizationID;
@@ -596,6 +597,7 @@ function editDetailFun(IsEdit, editContrastId) {
         }
     }
     $('#AddandEditorDetail').window('open');
+    $('#eStandardValue').numberbox('disable', true);
 }
 function saveDetail() {
 
