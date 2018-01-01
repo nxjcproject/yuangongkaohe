@@ -33,3 +33,8 @@ C:\Users\Administrator\Desktop\员工考核修改\yuangongkaohe-master\StaffAsse
 C:\Users\Administrator\Desktop\员工考核修改\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\员工考核修改\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.dll
 C:\Users\Administrator\Desktop\员工考核修改\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.pdb
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\bin\Debug\StaffAssessment.Infrastructure.dll
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\bin\Debug\StaffAssessment.Infrastructure.pdb
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.dll
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Infrastructure\obj\Debug\StaffAssessment.Infrastructure.pdb

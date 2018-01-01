@@ -32,32 +32,33 @@
         <div id="toolbar_ReportTemplate" style=" height: 58px; padding-top: 10px">                    
                         <table>
                             <tr>
-                                <td >组织机构：</td>
-                                <td><input id="productLineName" class="easyui-textbox" style="width: 80px;" readonly="readonly" />
+                                <td style="width: 50px; text-align: right;">组织机构</td>
+                                <td><input id="productLineName" class="easyui-textbox" style="width: 100px;" readonly="readonly" />
                                     <input id="organizationId" readonly="readonly" style="display: none;" />
                                 </td>
-                                <td>签到日期：</td>
+                                <td style="width: 60px; text-align: right;">签到日期</td>
                                 <td>
                                     <input id="mTime1" class="easyui-combobox" data-options="panelHeight:'auto'" style="width: 100px;" />
                                 </td> 
-                                <td>岗&nbsp &nbsp &nbsp 位：</td> 
+                                <td style="width: 40px; text-align: right;">岗位</td> 
 	    			            <td>
                                     <input class="easyui-combobox" type="text" id="workingSection" style="width:120px" />                  
 	    			            </td>
                                 </tr>
                         <tr>
-                                <td>班 &nbsp &nbsp &nbsp 组：</td>
+                                <td style="width: 50px; text-align: right;">班组</td>
 	    			            <td>
-                                    <select class="easyui-combobox" id="workingTeam"data-options="panelHeight:'auto'" name="workingTeam" style="width:80px">
+                                    <select class="easyui-combobox" id="workingTeam" data-options="panelHeight:'auto'" name="workingTeam" style="width:100px">
                                         <option value="全部">全部</option><option value="A">A组</option><option value="B">B组</option>
                                         <option value="C">C组</option><option value="D">D组</option><option value="常白">常白班</option>
                                     </select>
 	    			            </td>               
-                                <td>员 &nbsp &nbsp &nbsp 工：</td>
+                                <td style="width: 60px; text-align: right;">员工</td>
                                 <td>
-                                    <input id="Staff" class="easyui-combobox" data-options="panelHeight:'auto'" style="width: 90px;" />
-                                </td>                                                                        
-                                <td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true"
+                                    <input id="Staff" class="easyui-combobox" data-options="panelHeight:'auto'" style="width: 100px;" />
+                                </td>
+                                <td></td>                                                                        
+                                <td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'"
                                     onclick="Query();">签到列表</a>
                                 </td>    
                            </tr>
@@ -75,16 +76,16 @@
                                     <td>  
                                         <table>
                                             <tr>
-                                                <td>开始时间：</td>
+                                                <td style="width: 50px; text-align: right;">开始时间</td>
                                                 <td>
                                                         <input id="startTime" type="text" class="easyui-datebox" style="width:100px;" required="required"/>
                                                 </td>
-                                                    <td>结束时间：</td>
+                                                    <td style="width: 60px; text-align: right;">结束时间</td>
                                                     <td>
                                                         <input id="endTime" type="text" class="easyui-datebox" style="width:100px;" required="required"/>
                                                 </td>
                      
-                                                    <td>员工:</td>
+                                                    <td style="width: 30px; text-align: right;">员工</td>
                                                 <td >                               
                                                     <input id="DownStaff" class="easyui-combobox" style="width:90px" />               
                                                 </td>              

@@ -29,44 +29,65 @@
          <div data-options="region:'west',split:true" style="width: 150px;">
             <uc1:OrganisationTree ID="OrganisationTree_ProductionLine" runat="server" />
         </div>
-          <div id="toorBar" title="" style="height:56px;padding:10px;">
+          <div id="toorBar" title="" style="height:70px;">
             <div>
                 <table>
                     <tr>
-                         <td>组织机构:</td>
-                        <td >                               
-                            <input id="organizationName" class="easyui-textbox" readonly="readonly"style="width:80px" />               
-                       </td>
-                 
-                        <td>开始时间：</td>
                         <td>
-                             <input id="startTime" type="text" class="easyui-datebox" style="width:100px;" required="required"/>
-                        </td>
-                           <td>结束时间：</td>
-                         <td>
-                             <input id="endTime" type="text" class="easyui-datebox" style="width:100px;" required="required"/>
-                        </td>
-                     
-                         <td>员工:</td>
-                        <td >                               
-                            <input id="Staff" class="easyui-combobox" style="width:80px" />               
-                        </td>              
-                         <td>
-                            <a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="historyQuery()">查询</a>
+                            <table>
+                                <tr>
+                                    <td style="width: 50px; text-align: right;">组织机构</td>
+                                    <td>
+                                        <input id="organizationName" class="easyui-textbox" readonly="readonly" style="width: 120px" />
+                                    </td>
+
+                                    <td style="width: 60px; text-align: right;">开始时间</td>
+                                    <td>
+                                        <input id="startTime" type="text" class="easyui-datebox" style="width: 100px;" required="required" />
+                                    </td>
+                                    <td style="width: 60px; text-align: right;">结束时间</td>
+                                    <td>
+                                        <input id="endTime" type="text" class="easyui-datebox" style="width: 100px;" required="required" />
+                                    </td>
+
+                                   <%-- <td>员工</td>
+                                    <td >                               
+                                        <input id="Staff" class="easyui-combobox" style="width:80px" />               
+                                    </td>              
+                                        <td>
+                                        <a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="historyQuery()">查询</a>
+                                    </td>--%>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
-                </table>  
-                <table>
                     <tr>
-                       <td>
-                            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="addFun()">添加</a>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td style="width: 50px; text-align: right;">员工</td>
+                                    <td>
+                                        <input id="Staff" class="easyui-combobox" style="width: 120px" />
+                                    </td>
+                                    <td style="width:20px;"></td>
+                                    <td>
+                                        <a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="historyQuery()">查询</a>
+                                    </td>
+                                    <td>
+                                        <div class="datagrid-btn-separator"></div>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="addFun()">添加</a>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
-                </table>         
+                </table>              
             </div>
 	    </div> 
-         <div data-options="region:'center'" style="padding:5px;background:#eee;">
-             <table id="grid_Main"class="easyui-datagrid"></table>
+         <div data-options="region:'center'" style="background:#eee;">
+             <table id="grid_Main" class="easyui-datagrid"></table>
          </div>
     </div>
  	  

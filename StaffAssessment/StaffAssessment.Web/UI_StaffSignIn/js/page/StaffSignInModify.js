@@ -60,7 +60,7 @@ function LoadMainDataGrid(type, myData) {
                     { field: 'Shifts', title: '所在班次', width: 60, align: "center" },
                     { field: 'WorkingSectionName', title: '岗位', width: 80, align: "left" },
                     { field: 'Creator', title: '创建人', width: 80, align: "center" },
-                    { field: 'CreateTime', title: '创建时间', width: 120, align: "center" },
+                    { field: 'CreateTime', title: '创建时间', width: 135, align: "center" },
                     { field: 'Remark', title: '备注', width: 100, align: "center" }
                     //{
                     //    field: 'edit', title: '编辑', width: 150, formatter: function (value, row, index) {

@@ -103,3 +103,14 @@ E:\三层框架\只放最新程序\yuangongkaohe-master\StaffAssessment\StaffAss
 E:\三层框架\只放最新程序\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.csprojResolveAssemblyReference.cache
 E:\三层框架\只放最新程序\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.dll
 E:\三层框架\只放最新程序\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.pdb
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Service.dll
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Service.pdb
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\AutoMapper.dll
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\RunIndicators.dll
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.dll
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Infrastructure.dll
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.Infrastructure.pdb
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\bin\Debug\StaffAssessment.pdb
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.dll
+C:\Users\Administrator\Desktop\NXJC统一调整列宽\yuangongkaohe-master\StaffAssessment\StaffAssessment.Service\obj\Debug\StaffAssessment.Service.pdb
