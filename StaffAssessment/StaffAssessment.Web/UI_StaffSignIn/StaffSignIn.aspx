@@ -38,7 +38,7 @@
                                 </td>
                                 <td style="width: 60px; text-align: right;">签到日期</td>
                                 <td>
-                                    <input id="mTime1" class="easyui-combobox" data-options="panelHeight:'auto'" style="width: 100px;" />
+                                    <input id="mTime1" class="easyui-datebox" data-options="panelHeight:'auto'" style="width: 100px;" />
                                 </td> 
                                 <td style="width: 40px; text-align: right;">岗位</td> 
 	    			            <td>
